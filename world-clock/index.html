@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>World Clock – Current Time in Every Time Zone | StopwatchOnline.in</title>
+  <meta name="description" content="Free world clock showing live current time in 50+ major cities worldwide. Check time zones, UTC offsets, and day/night status instantly. No signup needed." />
+  <meta name="keywords" content="world clock, current time, time zones, international time, UTC, GMT, local time worldwide, time difference, what time is it, clock online, time now, live clock, global time, time converter, time zone converter, world time, current local time, time zones map, cities time, online world clock" />
+  <link rel="canonical" href="https://stopwatchonline.in/world-clock" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="World Clock – Live Time in Every Time Zone" />
+  <meta property="og:description" content="Check the current time in 50+ cities instantly. Free world clock with live map, UTC offsets, and day/night indicators." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stopwatchonline.in/world-clock" />
+  <meta property="og:site_name" content="StopwatchOnline.in" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="World Clock – Live Time in Every Time Zone" />
+  <meta name="twitter:description" content="Check the current time in 50+ cities instantly. Free world clock with live map and day/night indicators." />
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "World Clock",
+    "url": "https://stopwatchonline.in/world-clock",
+    "description": "Free online world clock showing current local time in major cities and time zones worldwide.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": ["Live world clock", "50+ cities", "Time zone converter", "Day/night map", "UTC offsets"],
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://stopwatchonline.in" },
+        { "@type": "ListItem", "position": 2, "name": "World Clock", "item": "https://stopwatchonline.in/world-clock" }
+      ]
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema for high-volume queries -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What time is it right now in different countries?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our world clock shows live current time in 50+ countries. The time updates every second so you always see the exact local time for each city."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many time zones are there in the world?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There are 24 standard time zones in the world, ranging from UTC-12 to UTC+14. Some countries use half-hour or quarter-hour offsets, bringing the total count to about 38 distinct offsets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is UTC time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "UTC (Coordinated Universal Time) is the primary time standard the world uses to regulate clocks. It does not observe daylight saving time and serves as the baseline from which all other time zones are defined."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between GMT and UTC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GMT (Greenwich Mean Time) and UTC (Coordinated Universal Time) share the same current time and are often used interchangeably. The difference is that UTC is an atomic-clock-based scientific standard, while GMT is a time zone."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0A0F1E;
+      --slate:   #111827;
+      --panel:   #151D2E;
+      --border:  #1E2D45;
+      --teal:    #00E5FF;
+      --teal-dim:#007A8A;
+      --amber:   #FFB347;
+      --white:   #E8F4F8;
+      --silver:  #7890AA;
+      --night:   #060D1A;
+    }
+
+    /* ── LIGHT MODE ── */
+    body.light {
+      --navy:    #f5f7fa;
+      --slate:   #eef0f5;
+      --panel:   #ffffff;
+      --border:  #dde2ec;
+      --teal:    #0284c7;
+      --teal-dim:#bae6fd;
+      --amber:   #d97706;
+      --white:   #0f172a;
+      --silver:  #4b5563;
+      --night:   #e2e8f0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* ── SHARED HEADER (matches rest of site) ── */
+    nav.site-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 1.75rem;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,15,30,0.92);
+      transition: background 0.3s;
+    }
+    body.light nav.site-header { background: rgba(245,247,250,0.92); }
+    body.light .page-tabs { background: var(--navy); }
+    body.light .local-banner { background: var(--panel); border-color: var(--border); }
+    body.light .map-container { background: var(--panel); }
+    body.light .clock-card { background: var(--panel); }
+    body.light .faq-q { background: var(--panel); }
+    body.light .faq-a { background: var(--panel); }
+    body.light .search-wrap input { background: var(--panel); color: var(--white); border-color: var(--border); }
+    body.light footer { background: var(--slate); }
+    .nav-logo {
+      font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em;
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; color: var(--white);
+      white-space: nowrap; flex-shrink: 1; min-width: 0;
+    }
+    .nav-logo:hover { color: var(--teal); }
+    .logo-dot {
+      width: 8px; height: 8px; background: var(--teal);
+      border-radius: 50%; flex-shrink: 0;
+      animation: logoPulse 2s ease-in-out infinite;
+    }
+    @keyframes logoPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.25)} }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; flex-shrink: 0; }
+    .btn-icon {
+      height: 36px; padding: 0 11px; border-radius: 8px;
+      border: 1px solid var(--border); background: rgba(255,255,255,0.04);
+      color: var(--silver); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.82rem; gap: 5px;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      white-space: nowrap; text-decoration: none; font-family: 'Inter', sans-serif;
+    }
+    .btn-icon:hover, .btn-icon:active {
+      background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.25);
+    }
+    .btn-icon.active { color: var(--teal); border-color: var(--teal-dim); background: rgba(0,229,255,0.08); }
+    .btn-icon-emoji { font-size: 1rem; line-height: 1; }
+    .btn-icon-label { font-size: 0.78rem; font-weight: 600; }
+
+    /* Tablet: hide labels */
+    @media (max-width: 900px) { .btn-icon-label { display: none; } .btn-icon { width: 36px; min-width: 36px; padding: 0; } }
+    /* Mobile: compact header — logo + theme toggle + share always visible */
+    @media (max-width: 639px) {
+      nav.site-header { padding: 0.5rem 0.75rem; gap: 0; justify-content: space-between; }
+      .nav-logo { font-size: 0.88rem; flex-shrink: 1; min-width: 0; padding-left: 2px; }
+      .nav-logo .logo-text { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+      .nav-links { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+      .btn-icon { width: 40px; min-width: 40px; height: 40px; padding: 0; font-size: 1.1rem; flex-shrink: 0; }
+      .btn-icon-label { display: none; }
+    }
+
+    /* ── PAGE TABS (cross-page nav bar) ── */
+    .page-tabs {
+      display: flex; align-items: center; gap: 4px;
+      padding: 0.75rem 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--navy); overflow-x: auto; scrollbar-width: none;
+    }
+    .page-tabs::-webkit-scrollbar { display: none; }
+    .page-tab {
+      padding: 0.5rem 1.1rem; border-radius: 8px 8px 0 0; border: none;
+      background: transparent; font-family: 'Inter', sans-serif;
+      font-size: 0.85rem; font-weight: 600; color: var(--silver);
+      cursor: pointer; white-space: nowrap; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color 0.18s, background 0.18s, border-color 0.18s;
+    }
+    .page-tab:hover { color: var(--white); background: rgba(255,255,255,0.04); }
+    .page-tab.active { color: var(--teal); border-bottom-color: var(--teal); background: rgba(0,229,255,0.06); }
+    @media (max-width: 639px) {
+      .page-tabs { display: none; }
+    }
+
+    /* ── MOBILE BOTTOM NAV ── */
+    .mobile-bottom-nav { display: none; }
+    @media (max-width: 639px) {
+      .mobile-bottom-nav {
+        display: flex; position: fixed;
+        bottom: 0; left: 0; right: 0; height: 60px;
+        background: rgba(10,15,30,0.97);
+        border-top: 1px solid var(--border);
+        z-index: 200;
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      }
+      body { padding-bottom: 68px; }
+      .mbn-item {
+        flex: 1; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 2px;
+        text-decoration: none; color: var(--silver);
+        font-size: 0.62rem; font-weight: 600; letter-spacing: 0.02em;
+        transition: color 0.18s; -webkit-tap-highlight-color: transparent;
+        padding: 6px 0;
+      }
+      .mbn-item:active { color: var(--white); }
+      .mbn-item.mbn-active { color: var(--teal); }
+      .mbn-icon { font-size: 1.35rem; line-height: 1; }
+      .mbn-label { line-height: 1; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 52px 20px 28px;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--white) 0%, var(--teal) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.25s;
+    }
+    .hero-sub {
+      margin-top: 14px;
+      color: var(--silver);
+      font-size: 0.95rem;
+      font-weight: 400;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.4s;
+    }
+
+    /* ── LOCAL TIME BANNER ── */
+    .local-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 16px 24px;
+      margin: 20px auto;
+      max-width: 640px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.55s;
+    }
+    .local-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--silver); }
+    .local-time-display {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(0,229,255,0.4);
+    }
+    .local-date { font-size: 0.8rem; color: var(--silver); margin-top: 2px; }
+    .local-tz { font-size: 0.75rem; color: var(--amber); font-weight: 600; }
+
+    /* ── SEARCH ── */
+    .search-wrap {
+      max-width: 440px;
+      margin: 0 auto 28px;
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.65s;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 12px 48px 12px 18px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-wrap input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(0,229,255,0.1); }
+    .search-wrap input::placeholder { color: var(--silver); }
+    .search-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--teal); pointer-events: none; font-size: 1rem; }
+
+    /* ── WORLD MAP ── */
+    .map-section {
+      max-width: 1100px;
+      margin: 0 auto 36px;
+      padding: 0 16px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 0.8s;
+    }
+    .map-container {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .map-label {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--silver);
+      z-index: 2;
+    }
+    .map-legend {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      z-index: 2;
+      display: flex;
+      gap: 14px;
+      font-size: 0.68rem;
+      color: var(--silver);
+      letter-spacing: 0.5px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 5px; }
+    .legend-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .legend-dot--capital {
+      background: #FFB347;
+      box-shadow: 0 0 4px rgba(255,179,71,0.8);
+    }
+    .legend-dot--city {
+      background: #00E5FF;
+      opacity: 0.6;
+    }
+    #worldMap {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── GRID ── */
+    .clocks-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+    @media (max-width: 639px) {
+      .clocks-section { padding-bottom: 80px; }
+      .faq-section { padding-bottom: 80px; }
+    }
+
+    /* ── COMPARE SECTION ── */
+    .compare-section {
+      max-width: 1100px;
+      margin: 0 auto 36px;
+      padding: 0 16px;
+    }
+    .compare-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px 22px;
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .compare-slot {
+      background: var(--slate);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+    .compare-select {
+      width: 100%;
+      background: var(--panel);
+      color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
+    .compare-select:focus { outline: none; border-color: var(--teal-dim); }
+    .compare-time {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 1px;
+    }
+    .compare-date { font-size: 0.78rem; color: var(--silver); margin-top: 4px; }
+    .compare-utc { font-size: 0.74rem; color: var(--silver); margin-top: 8px; letter-spacing: 1px; }
+    .compare-diff {
+      font-size: 0.72rem;
+      color: var(--amber);
+      margin-top: 6px;
+      min-height: 16px;
+    }
+    @media (max-width: 639px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    .section-count { font-size: 0.75rem; color: var(--silver); }
+
+    .clocks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .clock-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 18px 16px;
+      cursor: default;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: cardIn 0.5s ease forwards;
+    }
+    .clock-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .clock-card:hover { transform: translateY(-3px); border-color: var(--teal-dim); box-shadow: 0 8px 30px rgba(0,229,255,0.08); }
+    .clock-card:hover::before { opacity: 1; }
+
+    .card-city {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .card-country { font-size: 0.7rem; color: var(--silver); margin-bottom: 14px; }
+    .card-time {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 1px;
+      line-height: 1;
+      text-shadow: 0 0 12px rgba(0,229,255,0.3);
+    }
+    .card-ampm { font-size: 0.7rem; color: var(--silver); margin-left: 4px; vertical-align: top; padding-top: 4px; }
+    .card-date { font-size: 0.7rem; color: var(--silver); margin-top: 6px; }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+    .card-utc { font-size: 0.68rem; color: var(--silver); }
+    .card-daynight {
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    .card-daynight.day { background: rgba(255,179,71,0.12); color: var(--amber); }
+    .card-daynight.night { background: rgba(0,229,255,0.08); color: var(--teal); }
+
+    /* ── FAQ ── */
+    .faq-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 16px 72px;
+    }
+    .faq-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 16px 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--panel);
+      transition: background 0.15s;
+      user-select: none;
+    }
+    .faq-q:hover { background: rgba(0,229,255,0.04); }
+    .faq-icon { color: var(--teal); font-size: 1.1rem; transition: transform 0.25s; flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+      font-size: 0.84rem;
+      color: var(--silver);
+      line-height: 1.7;
+      background: var(--panel);
+    }
+    .faq-a-inner { padding: 0 20px 16px; }
+    .faq-item.open .faq-a { max-height: 200px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--silver);
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.6); }
+    }
+    @keyframes capital-pulse {
+      0%   { r: 4.5; opacity: 0.55; }
+      70%  { r: 8; opacity: 0; }
+      100% { r: 4.5; opacity: 0; }
+    }
+    .capital-ring {
+      animation: capital-pulse 2.4s ease-out infinite;
+      transform-origin: center;
+    }
+    .capital-dot {
+      filter: drop-shadow(0 0 4px rgba(255,179,71,0.9));
+    }
+    @keyframes sun-pulse {
+      0%   { r: 5; opacity: 0.9; }
+      70%  { r: 13; opacity: 0; }
+      100% { r: 5; opacity: 0; }
+    }
+    .sun-ring {
+      animation: sun-pulse 2.6s ease-out infinite;
+      transform-origin: center;
+    }
+    #sunMarker {
+      filter: drop-shadow(0 0 6px rgba(255,233,168,0.95));
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 12px 14px; }
+      .nav-links a { font-size: 0.72rem; padding: 4px 8px; }
+      .local-banner { flex-direction: column; gap: 4px; text-align: center; }
+      .local-time-display { font-size: 1.8rem; }
+      .clocks-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+      .card-time { font-size: 1.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0s !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<nav class="site-header">
+  <a class="nav-logo" href="https://stopwatchonline.in/" title="StopwatchOnline — Free Online Stopwatch">
+    <span class="logo-dot"></span>
+    <span class="logo-text">StopwatchOnline</span>
+  </a>
+  <div class="nav-links">
+    <button class="btn-icon" id="themeToggle" title="Toggle theme"><span class="btn-icon-emoji">☀️</span><span class="btn-icon-label"> Light Mode</span></button>
+    <button class="btn-icon" id="shareBtn" title="Share"><span class="btn-icon-emoji">🔗</span><span class="btn-icon-label"> Share</span></button>
+  </div>
+</nav>
+
+<!-- CROSS-PAGE TAB NAV -->
+<nav class="page-tabs" aria-label="Site navigation">
+  <a href="https://stopwatchonline.in/" class="page-tab">⏱ <span>Stopwatch</span></a>
+  <a href="https://stopwatchonline.in/5-minute-timer/" class="page-tab">⏳ <span>5 Min</span></a>
+  <a href="https://stopwatchonline.in/10-minute-timer/" class="page-tab">⌛ <span>10 Min</span></a>
+  <a href="https://stopwatchonline.in/pomodoro-timer/" class="page-tab">🍅 <span>Pomodoro</span></a>
+  <a href="https://stopwatchonline.in/egg-timer/" class="page-tab">🥚 <span>Egg Timer</span></a>
+  <a href="https://stopwatchonline.in/world-clock/" class="page-tab active" aria-current="page">🌍 <span>World Clock</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Live · Global · Real-Time</p>
+  <h1>World Clock</h1>
+  <p class="hero-sub">Current time in every timezone — updated every second</p>
+</section>
+
+<!-- LOCAL TIME -->
+<div class="local-banner">
+  <div>
+    <div class="local-label">Your Local Time</div>
+    <div class="local-time-display" id="localTime">--:--:--</div>
+    <div class="local-date" id="localDate">---</div>
+  </div>
+  <div style="text-align:right">
+    <div class="local-tz" id="localTZ">Detecting…</div>
+    <div class="local-label" style="margin-top:4px" id="localUTC">UTC</div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="Search city or country…" autocomplete="off" />
+  <span class="search-icon">🔍</span>
+</div>
+
+<!-- WORLD MAP -->
+<div class="map-section">
+  <div class="map-container">
+    <span class="map-label">Day / Night Map</span>
+    <div class="map-legend">
+      <span class="legend-item"><span class="legend-dot legend-dot--capital"></span> Capital city</span>
+      <span class="legend-item"><span class="legend-dot legend-dot--city"></span> City</span>
+    </div>
+    <svg id="worldMap" viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="nightGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#060D1A" stop-opacity="0.75"/>
+          <stop offset="100%" stop-color="#060D1A" stop-opacity="0.2"/>
+        </radialGradient>
+        <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFE9A8" stop-opacity="0.35"/>
+          <stop offset="45%" stop-color="#FFD27A" stop-opacity="0.16"/>
+          <stop offset="100%" stop-color="#FFD27A" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="glowFilter">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Ocean background -->
+      <rect width="1000" height="580" fill="#0D1826"/>
+
+      <g transform="translate(0,40)">
+      <!-- World map (real geography) -->
+      <path d="M 707.0 147.2 L 697.8 149.7 L 698.9 152.4 L 697.5 155.2 L 694.1 155.6 L 695.2 157.5 L 693.0 158.3 L 692.2 161.6 L 685.3 163.4 L 684.0 167.0 L 678.0 168.4 L 669.0 167.1 L 671.7 164.1 L 668.9 162.6 L 668.2 158.2 L 670.2 151.1 L 674.1 152.1 L 682.6 145.7 L 692.5 146.9 L 696.9 143.2 L 699.2 148.1 L 704.1 145.9 L 707.0 147.2 Z M 566.6 280.2 L 566.6 286.1 L 561.0 286.2 L 561.2 295.2 L 564.9 299.0 L 557.6 300.1 L 532.6 297.9 L 532.6 294.0 L 538.5 280.7 L 534.1 267.0 L 545.6 266.4 L 548.8 272.5 L 553.7 272.2 L 555.2 269.4 L 560.4 270.3 L 561.7 280.9 L 566.6 280.2 Z M 533.4 263.9 L 536.3 262.9 L 534.7 265.9 L 533.4 263.9 Z M 557.1 133.7 L 558.4 137.2 L 556.1 139.9 L 553.7 137.8 L 553.6 132.9 L 554.7 131.5 L 557.1 133.7 Z M 656.6 180.6 L 655.0 180.8 L 653.1 187.2 L 646.0 186.3 L 643.2 183.0 L 651.1 182.6 L 655.7 177.7 L 656.6 180.6 Z M 309.2 402.4 L 309.3 396.3 L 312.4 399.8 L 318.9 401.9 L 309.2 402.4 Z M 325.9 311.8 L 330.4 316.0 L 340.0 320.6 L 337.1 325.9 L 345.2 326.2 L 348.2 321.1 L 350.3 321.6 L 350.4 325.4 L 339.2 335.0 L 337.3 345.3 L 341.1 348.3 L 342.5 352.4 L 338.3 356.8 L 326.8 357.8 L 326.6 363.6 L 319.0 363.6 L 319.4 367.0 L 322.7 367.0 L 323.2 368.6 L 319.4 368.5 L 321.3 369.4 L 318.7 371.0 L 317.6 375.0 L 312.1 377.9 L 317.0 381.0 L 317.1 383.2 L 312.5 386.0 L 311.3 388.9 L 308.9 388.9 L 307.1 393.4 L 309.9 395.3 L 300.1 394.4 L 295.5 387.8 L 300.8 379.6 L 301.7 375.7 L 299.7 374.4 L 302.3 373.8 L 300.4 373.3 L 299.5 368.3 L 300.7 360.1 L 303.1 357.2 L 302.2 352.4 L 305.9 345.1 L 303.8 337.7 L 305.4 331.5 L 310.1 325.1 L 309.6 318.4 L 312.8 316.8 L 314.6 311.7 L 319.8 311.5 L 321.2 313.5 L 322.5 311.1 L 325.9 311.8 Z M 629.1 142.0 L 621.3 138.5 L 620.7 135.8 L 626.2 136.2 L 629.1 142.0 Z M 50.0 480.9 L 45.0 480.1 L 50.0 480.9 Z M 54.2 476.7 L 44.5 476.1 L 54.2 476.7 Z M 72.4 472.3 L 67.3 471.8 L 72.4 472.3 Z M 334.0 473.2 L 331.6 474.9 L 314.4 473.1 L 328.7 473.2 L 331.6 471.5 L 334.0 473.2 Z M 413.5 471.7 L 417.6 472.0 L 413.5 471.7 Z M 316.1 472.5 L 311.6 471.0 L 317.8 471.6 L 316.1 472.5 Z M 313.1 470.7 L 309.5 470.7 L 313.1 470.7 Z M 405.6 470.3 L 398.2 470.2 L 405.6 470.3 Z M 58.1 471.7 L 43.6 470.1 L 48.9 468.8 L 58.1 471.7 Z M 304.5 471.4 L 300.8 471.1 L 301.4 469.8 L 314.6 467.7 L 304.5 471.4 Z M 965.6 467.1 L 961.1 467.0 L 965.6 467.1 Z M 374.3 468.9 L 379.0 469.2 L 380.6 470.8 L 379.0 472.8 L 348.9 474.3 L 359.2 471.2 L 363.6 466.8 L 376.0 466.8 L 378.1 468.2 L 374.3 468.9 Z M 82.2 464.9 L 79.1 464.7 L 82.2 464.9 Z M 964.1 464.8 L 970.4 465.4 L 963.1 466.3 L 962.2 464.6 L 964.1 464.8 Z M 85.4 464.3 L 81.1 463.9 L 85.4 464.3 Z M 85.1 463.2 L 87.8 463.3 L 85.1 463.2 Z M 135.9 457.2 L 132.8 456.8 L 135.9 457.2 Z M 175.7 456.0 L 173.9 455.8 L 175.7 456.0 Z M 165.1 454.9 L 160.2 456.7 L 157.3 455.1 L 165.1 454.9 Z M 442.7 455.2 L 443.0 456.9 L 438.7 455.9 L 442.7 455.2 Z M 149.0 453.6 L 155.9 456.2 L 146.5 454.8 L 149.0 453.6 Z M 293.4 453.1 L 292.8 454.5 L 288.5 453.2 L 293.4 453.1 Z M 227.5 449.8 L 232.9 449.7 L 230.5 450.7 L 234.3 450.2 L 233.1 451.6 L 215.7 450.2 L 227.5 449.8 Z M 492.9 446.6 L 490.1 446.4 L 492.9 446.6 Z M 295.2 446.2 L 287.4 447.2 L 295.2 446.2 Z M 291.6 443.7 L 292.5 444.8 L 289.3 444.4 L 291.6 443.7 Z M 545.1 444.5 L 543.2 444.2 L 545.1 444.5 Z M 305.3 442.2 L 310.2 447.0 L 310.4 449.6 L 307.7 451.5 L 297.8 451.6 L 304.9 450.7 L 299.2 449.0 L 294.4 450.5 L 290.5 449.6 L 305.9 447.5 L 302.2 446.5 L 305.8 445.3 L 300.3 444.4 L 299.5 442.2 L 305.3 442.2 Z M 311.1 437.4 L 307.9 437.7 L 311.5 435.1 L 311.1 437.4 Z M 324.4 429.1 L 321.4 429.7 L 324.4 429.1 Z M 339.2 427.9 L 341.0 428.4 L 339.2 427.9 Z M 0.0 484.3 L 65.3 486.6 L 16.0 480.0 L 57.0 482.1 L 73.8 479.5 L 70.2 477.6 L 72.3 477.0 L 63.7 475.9 L 88.5 474.7 L 81.7 473.2 L 88.6 471.8 L 66.3 468.7 L 71.4 467.4 L 61.5 466.9 L 59.7 466.1 L 60.5 464.4 L 95.3 465.3 L 95.1 463.2 L 84.2 462.1 L 95.9 462.3 L 94.4 460.8 L 108.6 460.5 L 123.9 457.5 L 162.3 457.7 L 179.9 456.9 L 181.5 455.3 L 184.7 456.0 L 183.0 458.3 L 189.7 457.8 L 189.8 456.1 L 193.7 457.1 L 190.6 459.0 L 219.3 459.5 L 226.2 458.9 L 214.4 454.6 L 225.2 454.5 L 214.1 453.6 L 213.5 452.0 L 247.4 453.7 L 253.3 451.9 L 254.3 453.5 L 271.6 455.2 L 276.8 453.9 L 276.5 452.6 L 285.9 455.1 L 308.7 453.1 L 314.3 450.3 L 309.1 442.9 L 313.9 442.1 L 312.7 441.3 L 314.7 437.7 L 312.4 436.4 L 315.3 436.8 L 315.2 435.3 L 322.4 430.8 L 340.5 425.6 L 342.0 426.8 L 338.1 427.1 L 336.6 429.2 L 327.6 431.2 L 327.2 433.4 L 331.5 433.2 L 330.4 434.3 L 322.8 434.1 L 322.6 435.9 L 317.9 437.4 L 317.6 439.3 L 319.8 439.1 L 318.9 440.6 L 325.1 440.1 L 322.8 440.9 L 330.6 447.9 L 327.8 449.1 L 330.4 449.5 L 327.0 450.1 L 331.3 450.2 L 329.7 451.7 L 333.4 452.9 L 327.7 453.2 L 331.1 454.8 L 328.1 456.4 L 331.3 456.4 L 324.4 457.5 L 321.4 459.1 L 323.9 459.6 L 303.9 463.2 L 285.5 462.9 L 289.5 465.0 L 297.6 465.6 L 292.1 467.2 L 273.3 466.3 L 283.6 468.7 L 267.3 466.9 L 275.2 470.9 L 288.2 470.5 L 287.3 472.0 L 278.6 472.2 L 287.7 472.5 L 292.1 474.7 L 302.6 474.0 L 326.3 476.6 L 316.2 477.7 L 331.8 478.3 L 325.7 479.3 L 329.9 480.6 L 329.3 481.7 L 359.2 477.7 L 374.8 479.0 L 392.2 474.7 L 434.4 472.2 L 399.4 468.0 L 419.5 462.2 L 449.1 459.5 L 447.8 459.1 L 451.5 456.6 L 459.4 455.4 L 454.3 454.0 L 468.0 451.2 L 469.5 449.6 L 465.6 448.3 L 469.8 448.8 L 471.4 447.0 L 475.9 449.1 L 478.5 448.8 L 478.4 446.8 L 483.4 446.5 L 482.9 448.2 L 498.4 449.2 L 525.4 445.0 L 532.5 446.6 L 536.3 444.6 L 573.6 447.3 L 590.6 444.5 L 590.7 441.3 L 593.0 440.8 L 597.8 443.5 L 608.0 444.9 L 611.2 441.3 L 629.3 436.9 L 634.4 438.9 L 636.7 436.8 L 634.6 436.2 L 640.4 436.7 L 639.8 434.6 L 649.1 433.0 L 658.3 434.7 L 655.9 435.1 L 656.0 436.9 L 693.2 438.3 L 694.4 440.2 L 691.9 444.1 L 686.8 445.2 L 692.3 445.6 L 684.7 453.2 L 687.0 453.7 L 698.0 449.0 L 703.7 444.1 L 710.1 444.1 L 719.5 439.4 L 734.7 436.4 L 776.0 435.2 L 785.2 433.0 L 804.0 435.9 L 814.1 432.8 L 821.2 435.5 L 816.7 437.4 L 849.6 434.4 L 858.2 436.4 L 861.4 434.2 L 870.6 433.6 L 899.2 435.8 L 901.7 436.5 L 899.9 438.6 L 905.4 437.9 L 908.6 440.0 L 920.2 441.2 L 927.5 439.8 L 943.8 443.1 L 950.5 447.3 L 950.0 445.7 L 951.8 445.3 L 973.4 448.4 L 974.6 449.6 L 972.7 451.6 L 967.8 451.1 L 970.9 452.9 L 962.3 452.6 L 965.8 453.9 L 959.3 455.2 L 957.8 453.9 L 959.4 457.1 L 953.8 456.6 L 951.1 459.0 L 946.9 459.3 L 952.2 460.7 L 951.2 463.8 L 956.7 466.4 L 955.4 467.3 L 964.0 468.6 L 949.0 468.2 L 949.8 469.6 L 944.3 471.1 L 946.0 472.3 L 940.4 473.4 L 946.2 473.5 L 945.7 476.0 L 954.4 478.2 L 948.0 479.2 L 957.6 478.8 L 966.9 481.6 L 998.3 483.9 L 0.0 484.3 Z M 345.7 425.5 L 343.0 425.9 L 345.7 425.5 Z M 331.5 423.8 L 333.7 423.9 L 331.5 423.8 Z M 338.9 422.0 L 336.2 422.7 L 338.9 422.0 Z M 692.2 386.4 L 696.0 386.7 L 691.3 388.1 L 691.2 385.7 L 692.2 386.4 Z M 902.9 363.3 L 911.7 363.5 L 911.0 369.9 L 905.6 371.0 L 902.1 365.1 L 902.9 363.3 Z M 882.2 349.3 L 879.2 349.7 L 882.2 349.3 Z M 862.8 281.6 L 865.3 281.8 L 863.7 283.2 L 862.8 281.6 Z M 897.7 283.2 L 899.3 289.9 L 903.5 291.5 L 906.3 302.4 L 913.2 306.4 L 915.8 312.3 L 918.4 312.2 L 919.0 315.2 L 925.4 322.1 L 926.7 329.7 L 924.8 337.3 L 920.2 343.3 L 916.4 354.3 L 910.7 355.4 L 906.1 357.6 L 906.6 358.7 L 904.1 356.2 L 902.3 356.8 L 902.4 355.3 L 898.7 357.9 L 892.8 356.6 L 888.5 353.8 L 886.9 348.3 L 883.8 349.0 L 883.5 344.9 L 882.4 347.6 L 880.2 347.9 L 883.1 343.3 L 882.7 340.5 L 876.8 347.1 L 872.8 340.4 L 864.3 337.5 L 849.7 339.7 L 843.0 344.2 L 832.9 344.4 L 827.4 347.4 L 819.4 345.2 L 821.4 338.1 L 814.5 322.9 L 816.2 323.6 L 815.1 321.1 L 817.2 323.1 L 815.0 317.9 L 816.5 310.9 L 817.0 312.5 L 824.2 307.4 L 836.1 304.5 L 839.8 300.3 L 839.8 297.4 L 841.6 295.7 L 843.1 298.6 L 843.3 295.1 L 846.6 295.6 L 845.6 293.1 L 850.1 288.9 L 853.6 288.7 L 855.7 292.6 L 856.8 291.1 L 860.1 292.1 L 859.3 290.0 L 862.8 284.6 L 868.6 283.7 L 866.5 281.1 L 878.0 284.5 L 879.2 283.2 L 880.4 284.3 L 876.2 291.5 L 890.3 299.0 L 892.8 294.6 L 894.9 280.4 L 896.1 279.9 L 897.7 283.2 Z M 547.6 116.7 L 544.4 120.3 L 540.4 121.1 L 526.5 119.0 L 536.0 118.1 L 535.4 116.4 L 541.6 113.9 L 546.9 114.7 L 547.6 116.7 Z M 628.1 142.0 L 624.3 139.7 L 628.1 142.0 Z M 635.7 143.3 L 633.4 142.2 L 633.3 139.8 L 629.1 142.0 L 625.0 135.3 L 629.2 135.9 L 629.0 133.7 L 632.7 135.6 L 635.2 134.0 L 639.9 138.2 L 637.6 138.4 L 635.7 143.3 Z M 581.7 262.4 L 580.6 257.4 L 584.5 256.5 L 585.6 258.9 L 581.7 262.4 Z M 516.6 109.1 L 517.7 110.3 L 515.3 112.5 L 507.0 108.1 L 514.0 107.0 L 516.6 109.1 Z M 504.5 232.8 L 504.4 224.6 L 502.2 220.3 L 507.8 215.6 L 510.7 220.6 L 507.7 224.9 L 507.5 232.3 L 504.5 232.8 Z M 506.6 217.0 L 502.6 219.5 L 492.0 219.5 L 492.2 223.9 L 484.6 221.1 L 488.2 213.2 L 498.0 208.2 L 500.6 208.6 L 502.7 213.8 L 505.8 214.7 L 506.6 217.0 Z M 757.1 189.0 L 756.4 192.3 L 751.7 184.5 L 751.6 188.2 L 747.8 189.7 L 746.5 182.7 L 744.5 181.6 L 747.1 179.9 L 744.7 178.2 L 745.4 176.3 L 749.1 177.2 L 749.5 179.8 L 756.9 180.8 L 753.2 184.5 L 754.5 186.2 L 756.2 184.3 L 757.1 189.0 Z M 577.8 133.4 L 563.6 135.2 L 562.1 132.5 L 563.8 130.1 L 562.1 128.2 L 577.4 127.8 L 579.4 128.5 L 576.3 132.1 L 577.8 133.4 Z M 281.9 175.8 L 283.5 176.0 L 281.9 175.8 Z M 552.8 125.4 L 554.1 128.9 L 551.2 131.8 L 543.7 125.7 L 547.0 124.3 L 552.8 125.4 Z M 588.2 105.3 L 584.8 107.6 L 571.6 105.8 L 565.6 106.9 L 564.4 104.6 L 566.4 103.6 L 565.2 100.2 L 571.6 99.5 L 573.9 95.4 L 578.2 94.1 L 585.8 95.6 L 585.5 97.8 L 590.9 101.8 L 586.8 102.8 L 588.2 105.3 Z M 253.0 205.9 L 252.3 200.1 L 254.7 198.7 L 253.0 205.9 Z M 325.9 311.8 L 322.5 311.1 L 321.2 313.5 L 316.0 310.6 L 311.3 313.3 L 308.9 306.8 L 309.7 303.9 L 306.5 298.1 L 308.7 295.4 L 307.1 293.3 L 309.1 284.8 L 306.6 280.5 L 318.3 277.0 L 319.4 283.3 L 331.8 288.3 L 332.8 295.2 L 337.9 295.4 L 340.2 300.6 L 339.1 305.6 L 335.8 303.6 L 328.4 304.6 L 325.9 311.8 Z M 362.1 250.7 L 365.5 250.9 L 364.3 253.9 L 359.6 255.0 L 359.2 250.8 L 362.1 250.7 Z M 343.0 244.6 L 347.1 242.8 L 352.8 244.0 L 357.0 238.0 L 361.3 246.8 L 353.9 254.2 L 358.5 252.6 L 359.9 255.6 L 362.9 254.8 L 362.2 257.3 L 368.3 251.8 L 375.9 254.9 L 375.7 258.9 L 379.4 256.6 L 388.9 258.0 L 396.6 263.7 L 401.6 264.6 L 403.2 270.3 L 401.7 275.6 L 393.7 285.7 L 392.0 285.5 L 391.1 299.2 L 386.0 311.1 L 383.1 313.7 L 375.9 314.1 L 364.8 320.7 L 364.4 329.4 L 355.4 339.2 L 359.4 334.6 L 357.4 333.5 L 351.7 343.7 L 352.3 340.8 L 350.6 339.1 L 339.9 333.9 L 350.4 325.4 L 350.8 322.9 L 348.2 321.1 L 349.2 316.8 L 346.1 316.7 L 344.8 312.0 L 338.8 311.3 L 338.4 304.9 L 340.2 300.6 L 337.8 295.3 L 332.8 295.2 L 331.8 288.3 L 319.4 283.3 L 318.3 277.0 L 309.3 280.9 L 303.7 280.6 L 303.7 276.4 L 299.4 277.8 L 296.6 276.2 L 294.4 271.1 L 297.6 264.2 L 305.6 262.0 L 307.1 253.2 L 305.3 248.4 L 307.8 248.3 L 305.9 245.3 L 312.7 244.2 L 313.6 246.8 L 318.0 248.1 L 323.9 243.5 L 322.0 243.1 L 319.9 238.1 L 325.3 240.1 L 332.6 235.4 L 334.5 239.1 L 334.2 245.2 L 336.5 246.7 L 343.0 244.6 Z M 746.9 174.1 L 749.9 171.4 L 755.8 174.2 L 749.3 175.9 L 746.9 174.1 Z M 581.6 311.7 L 575.2 315.5 L 570.7 321.5 L 563.9 320.4 L 560.3 324.6 L 557.3 324.3 L 555.5 311.1 L 558.3 311.0 L 558.3 300.9 L 564.5 300.0 L 565.5 301.3 L 570.2 299.5 L 577.8 309.9 L 581.6 311.7 Z M 567.1 226.0 L 576.1 235.8 L 570.9 235.3 L 562.3 238.6 L 554.2 235.8 L 551.6 237.9 L 551.7 240.3 L 546.1 240.3 L 544.9 243.7 L 540.9 237.3 L 540.1 233.1 L 543.0 229.1 L 551.6 227.7 L 552.5 225.3 L 557.4 224.1 L 561.2 219.9 L 563.5 219.7 L 565.4 225.5 L 567.1 226.0 Z M 330.2 122.4 L 333.7 121.9 L 329.2 123.1 L 331.9 119.4 L 330.2 122.4 Z M 322.7 120.9 L 327.6 121.1 L 323.1 121.6 L 321.0 120.3 L 322.2 119.3 L 322.7 120.9 Z M 313.5 124.6 L 311.6 123.1 L 311.6 119.2 L 307.6 118.2 L 303.0 124.3 L 292.4 125.0 L 309.8 115.2 L 317.9 113.2 L 321.4 114.1 L 321.2 115.5 L 315.3 116.4 L 320.2 117.5 L 318.5 119.2 L 320.6 121.6 L 330.4 124.2 L 321.3 126.3 L 318.1 129.1 L 316.2 126.5 L 323.9 124.0 L 319.8 124.1 L 320.4 122.5 L 313.5 124.6 Z M 328.2 113.7 L 320.8 111.4 L 328.2 113.7 Z M 146.6 109.4 L 151.4 110.3 L 157.5 115.4 L 144.7 110.7 L 145.9 109.5 L 143.5 108.9 L 146.6 109.4 Z M 345.9 106.9 L 342.1 112.2 L 343.9 110.9 L 345.7 111.1 L 344.2 112.6 L 346.4 112.4 L 346.2 113.7 L 351.0 113.0 L 349.6 115.6 L 352.6 114.9 L 350.3 117.3 L 353.1 116.4 L 352.6 120.3 L 349.5 119.9 L 349.4 117.1 L 344.8 119.8 L 347.7 117.6 L 335.4 117.8 L 337.9 115.2 L 335.6 115.1 L 338.5 113.7 L 341.5 108.3 L 345.9 106.9 Z M 275.7 103.5 L 272.0 102.7 L 275.7 103.5 Z M 134.0 102.3 L 135.4 105.2 L 131.8 102.4 L 134.0 102.3 Z M 131.4 99.7 L 132.8 100.1 L 131.7 101.0 L 134.2 99.6 L 133.4 101.9 L 131.2 101.9 L 131.4 99.7 Z M 280.7 93.7 L 277.7 94.7 L 280.7 93.7 Z M 272.1 75.2 L 269.3 77.2 L 266.8 76.6 L 272.1 75.2 Z M 264.0 68.8 L 277.0 72.8 L 268.5 71.8 L 262.7 74.7 L 261.6 73.0 L 257.8 73.4 L 260.3 71.9 L 261.1 67.5 L 264.0 68.8 Z M 267.4 67.3 L 265.3 66.5 L 267.4 67.3 Z M 295.4 61.7 L 292.3 61.2 L 295.4 61.7 Z M 289.7 60.2 L 291.4 60.7 L 290.7 62.8 L 285.4 62.5 L 289.7 60.2 Z M 279.9 58.8 L 282.6 57.5 L 279.9 58.8 Z M 279.3 56.2 L 275.5 56.5 L 279.3 56.2 Z M 229.3 56.6 L 235.2 58.9 L 224.0 58.7 L 229.3 56.6 Z M 138.8 94.8 L 133.8 92.8 L 123.6 83.9 L 118.2 86.4 L 113.6 82.4 L 108.3 82.5 L 108.3 56.6 L 124.3 59.2 L 122.4 58.0 L 126.6 56.5 L 127.2 57.7 L 139.6 55.1 L 131.3 58.9 L 142.4 56.1 L 145.3 54.9 L 144.3 54.0 L 150.7 57.3 L 153.9 55.2 L 154.3 57.3 L 161.8 56.1 L 180.5 58.8 L 183.4 60.0 L 180.1 61.6 L 194.1 61.1 L 201.1 65.0 L 202.3 64.2 L 200.0 61.6 L 206.2 59.5 L 199.2 60.7 L 197.9 60.3 L 199.1 59.4 L 205.0 58.6 L 210.1 61.0 L 229.2 62.2 L 225.9 60.1 L 229.5 59.8 L 233.3 60.5 L 232.2 62.5 L 234.9 63.9 L 232.1 63.8 L 233.9 65.0 L 234.9 61.0 L 240.3 59.5 L 237.1 58.9 L 240.1 57.0 L 231.7 55.0 L 233.5 53.7 L 232.1 52.0 L 237.1 50.0 L 245.6 55.2 L 241.9 56.5 L 248.8 57.1 L 246.5 57.6 L 249.2 60.4 L 251.7 57.7 L 254.9 58.6 L 256.0 60.3 L 254.6 61.3 L 257.4 63.4 L 264.2 59.0 L 262.4 56.0 L 271.1 56.6 L 274.2 59.0 L 270.6 59.9 L 273.6 63.7 L 268.2 65.7 L 263.5 64.2 L 267.0 66.1 L 259.1 65.2 L 261.1 66.3 L 257.0 68.5 L 246.0 66.8 L 258.2 68.9 L 255.2 71.7 L 247.7 73.4 L 239.9 72.1 L 247.9 74.1 L 241.1 76.8 L 236.7 82.0 L 236.4 85.9 L 237.9 87.9 L 241.1 86.9 L 242.6 91.8 L 248.3 91.1 L 263.2 96.6 L 271.1 97.1 L 271.4 102.9 L 276.1 106.5 L 275.3 108.0 L 280.8 107.6 L 281.9 104.9 L 278.6 98.1 L 285.6 95.4 L 287.4 92.5 L 285.6 88.9 L 281.8 87.1 L 285.1 84.5 L 282.8 81.1 L 284.6 79.0 L 282.9 77.0 L 295.2 76.5 L 301.7 80.2 L 306.9 80.5 L 306.4 83.1 L 303.7 83.3 L 307.3 85.3 L 305.0 86.8 L 309.5 86.5 L 309.7 88.9 L 316.6 87.7 L 320.8 82.6 L 323.8 85.6 L 322.3 86.1 L 326.0 87.5 L 324.2 88.9 L 327.8 89.2 L 326.6 90.5 L 329.5 91.7 L 326.6 92.4 L 332.3 95.1 L 332.0 96.7 L 340.5 98.4 L 332.3 102.1 L 340.4 99.6 L 340.7 101.5 L 344.5 101.5 L 343.5 104.0 L 345.3 105.1 L 333.0 110.4 L 315.2 110.6 L 306.4 116.2 L 302.9 115.5 L 306.1 116.4 L 303.5 119.1 L 286.5 128.8 L 280.9 128.9 L 280.4 131.1 L 270.2 134.2 L 269.0 132.9 L 271.8 129.0 L 270.6 124.1 L 254.4 115.9 L 245.7 116.5 L 235.6 112.9 L 158.0 113.9 L 155.8 111.1 L 153.3 111.1 L 153.1 108.7 L 150.0 109.8 L 145.2 107.9 L 147.2 106.5 L 145.1 106.9 L 144.9 105.1 L 148.0 105.4 L 147.1 103.2 L 144.1 106.2 L 144.2 103.0 L 141.1 101.3 L 144.0 101.6 L 142.6 100.2 L 140.0 102.1 L 137.9 100.8 L 139.9 99.4 L 137.6 98.8 L 139.8 96.1 L 138.6 97.0 L 138.8 94.8 Z M 181.8 48.4 L 186.7 47.3 L 190.8 48.1 L 189.7 49.2 L 194.1 47.2 L 200.5 51.1 L 201.9 50.3 L 199.3 46.8 L 203.2 46.5 L 207.1 47.8 L 209.6 52.6 L 219.6 56.4 L 212.5 56.6 L 216.7 57.2 L 214.1 58.9 L 203.7 57.1 L 185.7 59.8 L 184.1 57.8 L 176.3 57.2 L 174.4 55.4 L 189.8 54.7 L 173.3 53.9 L 171.4 52.7 L 179.5 51.4 L 169.4 50.7 L 176.1 47.1 L 182.4 46.3 L 181.8 48.4 Z M 207.5 47.5 L 202.8 45.8 L 209.0 45.5 L 207.5 47.5 Z M 279.0 45.4 L 288.6 47.6 L 279.1 47.9 L 275.3 45.6 L 279.0 45.4 Z M 259.4 52.8 L 264.4 52.6 L 264.8 51.2 L 261.3 50.0 L 264.9 49.7 L 262.5 47.4 L 265.9 47.8 L 262.5 47.0 L 273.2 45.3 L 276.9 47.9 L 275.1 50.3 L 278.3 48.8 L 284.6 49.5 L 281.9 48.6 L 285.3 48.0 L 293.6 49.9 L 291.0 50.8 L 292.4 50.9 L 291.6 52.2 L 294.9 50.7 L 300.9 51.3 L 302.2 52.0 L 298.2 53.3 L 303.7 53.2 L 300.2 54.4 L 307.8 53.5 L 310.0 54.2 L 305.3 55.4 L 310.7 54.7 L 313.3 56.3 L 307.6 56.9 L 314.7 57.6 L 307.4 58.8 L 316.0 60.4 L 315.1 61.6 L 319.6 61.0 L 322.6 62.3 L 321.1 63.2 L 324.8 63.3 L 323.0 64.4 L 329.6 65.0 L 323.1 67.6 L 323.2 69.7 L 318.2 67.4 L 320.9 65.8 L 309.6 66.0 L 321.0 73.0 L 320.5 74.3 L 319.0 73.1 L 320.3 75.2 L 319.1 76.1 L 308.6 73.0 L 316.6 77.3 L 309.5 77.1 L 301.3 74.7 L 296.4 70.7 L 282.7 70.4 L 285.3 68.2 L 290.3 69.9 L 289.6 68.6 L 295.6 68.1 L 293.3 66.1 L 299.3 63.1 L 294.8 59.2 L 287.2 59.2 L 289.8 57.8 L 288.2 56.5 L 280.3 53.9 L 280.8 55.6 L 273.4 55.3 L 275.1 56.3 L 253.1 54.1 L 251.7 52.6 L 257.9 52.8 L 250.5 51.5 L 252.1 47.0 L 263.5 45.0 L 259.2 48.0 L 263.7 51.8 L 259.4 52.8 Z M 222.1 44.6 L 229.9 44.9 L 226.5 47.4 L 231.8 48.1 L 231.6 50.5 L 225.5 51.9 L 214.6 47.9 L 221.8 47.5 L 217.9 45.8 L 222.1 44.6 Z M 227.0 44.8 L 223.8 44.7 L 227.0 44.8 Z M 241.1 44.0 L 248.9 45.0 L 235.5 49.9 L 234.2 45.4 L 241.1 44.0 Z M 167.3 44.2 L 179.4 45.8 L 166.1 49.4 L 164.9 51.4 L 158.0 52.6 L 150.4 50.1 L 156.1 45.1 L 153.6 43.5 L 167.3 44.2 Z M 210.7 41.6 L 208.6 41.3 L 210.7 41.6 Z M 240.1 41.6 L 231.6 41.7 L 235.9 40.0 L 240.1 41.6 Z M 233.0 40.3 L 230.4 40.4 L 233.0 40.3 Z M 171.2 40.1 L 168.3 40.0 L 173.5 38.6 L 171.2 40.1 Z M 216.0 38.9 L 209.9 38.6 L 216.0 38.9 Z M 211.0 37.3 L 213.7 37.6 L 211.0 37.3 Z M 228.5 37.6 L 228.0 39.6 L 229.4 39.8 L 227.4 41.6 L 221.3 41.6 L 220.2 40.5 L 224.4 39.8 L 214.4 40.0 L 218.7 39.5 L 217.2 37.6 L 222.5 39.1 L 219.8 37.5 L 228.5 37.6 Z M 218.7 37.3 L 221.4 36.9 L 218.7 37.3 Z M 199.1 38.8 L 206.6 39.1 L 205.2 41.5 L 187.4 43.3 L 182.4 42.5 L 191.1 41.0 L 173.3 40.9 L 180.2 39.8 L 174.5 40.0 L 181.1 37.5 L 196.9 40.3 L 193.5 37.9 L 197.6 36.6 L 199.1 38.8 Z M 184.5 36.8 L 180.9 36.7 L 184.5 36.8 Z M 238.0 36.4 L 251.9 38.1 L 246.0 38.3 L 252.9 40.4 L 271.7 39.4 L 279.4 41.9 L 245.6 42.7 L 241.3 37.9 L 230.8 36.9 L 238.0 36.4 Z M 179.0 35.1 L 174.0 38.2 L 172.5 36.7 L 166.8 39.3 L 158.5 38.5 L 169.1 35.3 L 179.0 35.1 Z M 250.4 35.4 L 246.6 34.6 L 250.4 35.4 Z M 209.5 35.7 L 205.3 34.1 L 209.5 35.7 Z M 234.7 33.9 L 241.2 34.3 L 234.7 33.9 Z M 217.4 34.2 L 215.3 33.7 L 217.4 34.2 Z M 183.7 34.0 L 180.4 33.5 L 183.7 34.0 Z M 193.1 33.1 L 195.3 33.4 L 192.5 34.9 L 185.3 34.0 L 193.1 33.1 Z M 194.9 31.6 L 185.2 32.4 L 194.9 31.6 Z M 232.7 31.9 L 236.2 33.2 L 230.5 33.9 L 226.8 31.2 L 232.7 31.9 Z M 212.6 29.7 L 224.9 33.4 L 208.9 32.4 L 212.8 31.3 L 206.8 29.9 L 212.6 29.7 Z M 225.5 27.9 L 221.8 27.7 L 225.5 27.9 Z M 244.7 24.7 L 263.7 29.8 L 255.8 30.5 L 253.3 32.8 L 242.5 32.3 L 244.6 31.8 L 238.3 30.7 L 246.3 29.5 L 235.8 29.8 L 234.2 29.1 L 237.7 28.5 L 231.1 27.4 L 238.0 27.3 L 232.2 27.0 L 239.0 26.3 L 234.6 25.5 L 240.6 24.8 L 238.2 24.1 L 244.7 24.7 Z M 306.9 19.4 L 329.7 21.5 L 309.1 24.2 L 319.8 23.8 L 299.7 27.5 L 303.9 27.5 L 301.6 28.5 L 286.9 29.3 L 292.9 30.4 L 281.6 30.4 L 293.2 31.3 L 287.8 31.9 L 291.1 32.4 L 283.2 33.5 L 282.5 35.0 L 273.1 34.8 L 283.3 36.5 L 275.8 38.4 L 251.3 36.6 L 258.7 35.7 L 255.2 34.1 L 256.9 33.7 L 264.5 35.1 L 270.2 33.8 L 264.2 34.8 L 262.3 33.5 L 265.5 32.8 L 256.7 32.9 L 258.8 31.2 L 272.8 30.7 L 265.4 30.6 L 267.8 30.4 L 259.9 28.2 L 260.2 26.9 L 276.4 28.9 L 269.4 26.9 L 286.4 25.4 L 281.3 25.2 L 284.5 24.1 L 263.0 26.4 L 260.3 25.6 L 268.6 24.6 L 256.3 26.0 L 252.2 25.2 L 264.0 24.2 L 251.6 25.0 L 256.6 23.6 L 245.2 23.3 L 264.5 21.0 L 277.3 22.3 L 270.9 21.1 L 281.1 20.3 L 278.0 19.7 L 306.9 19.4 Z M 526.5 118.7 L 529.0 120.7 L 525.7 120.9 L 525.1 122.7 L 523.4 121.0 L 521.6 122.5 L 516.6 121.8 L 519.6 118.1 L 526.5 118.7 Z M 313.6 403.2 L 310.2 402.8 L 313.6 403.2 Z M 306.3 402.6 L 309.8 402.7 L 310.9 404.6 L 306.3 402.6 Z M 302.7 402.4 L 304.7 403.0 L 302.7 402.4 Z M 301.6 400.1 L 299.3 400.2 L 301.6 400.1 Z M 297.4 398.6 L 299.3 399.5 L 297.4 400.4 L 294.8 398.8 L 297.4 398.6 Z M 293.3 397.0 L 296.7 398.2 L 293.3 397.0 Z M 309.3 396.3 L 309.2 402.4 L 300.2 401.7 L 304.6 401.5 L 304.0 399.0 L 304.8 401.0 L 308.1 401.2 L 305.2 400.1 L 307.3 398.4 L 304.6 398.3 L 304.4 396.6 L 309.3 396.3 Z M 293.0 386.6 L 292.8 388.9 L 290.1 388.4 L 291.9 385.4 L 293.0 386.6 Z M 295.1 373.4 L 294.3 376.0 L 292.6 374.0 L 295.1 373.4 Z M 295.0 370.4 L 293.3 370.1 L 294.3 366.1 L 296.0 367.2 L 295.0 370.4 Z M 313.3 313.4 L 312.8 316.8 L 309.6 318.4 L 310.1 325.1 L 306.4 328.9 L 304.0 336.6 L 305.9 345.1 L 302.2 352.4 L 303.1 357.2 L 300.7 360.1 L 299.5 368.3 L 300.4 373.3 L 302.3 373.8 L 299.7 374.4 L 301.7 375.7 L 300.8 379.6 L 295.5 387.8 L 300.0 394.4 L 309.8 395.4 L 303.3 396.6 L 301.9 399.7 L 298.8 398.2 L 302.1 396.7 L 297.0 397.9 L 301.3 396.2 L 296.8 397.5 L 295.4 396.8 L 296.8 395.8 L 294.3 396.3 L 293.6 394.8 L 298.5 395.2 L 297.8 393.3 L 295.7 394.6 L 291.3 390.8 L 294.9 391.5 L 292.6 389.5 L 294.8 387.8 L 292.7 383.3 L 296.1 383.8 L 292.5 382.5 L 294.0 382.2 L 293.5 380.0 L 289.6 379.8 L 294.6 376.2 L 293.3 378.5 L 295.1 377.3 L 294.8 379.4 L 295.1 376.3 L 297.2 376.3 L 296.1 374.9 L 298.1 373.5 L 296.4 372.7 L 299.0 365.3 L 295.4 366.1 L 294.4 363.9 L 296.5 359.0 L 295.3 353.7 L 301.4 340.8 L 301.3 330.2 L 305.3 309.4 L 304.3 301.0 L 306.8 298.7 L 308.0 300.1 L 311.3 313.3 L 313.3 313.4 Z M 808.0 194.5 L 805.6 198.9 L 801.9 198.5 L 803.5 194.8 L 808.0 194.5 Z M 862.5 131.9 L 860.8 130.6 L 855.6 133.4 L 855.9 135.1 L 852.0 134.1 L 836.5 142.4 L 839.6 137.5 L 838.4 136.2 L 830.5 141.2 L 827.1 141.3 L 826.8 143.3 L 830.4 144.4 L 831.3 146.9 L 835.4 145.0 L 840.7 146.1 L 833.8 149.5 L 831.0 153.2 L 838.5 161.6 L 833.4 161.3 L 838.3 163.5 L 834.0 165.9 L 839.1 167.0 L 837.8 171.4 L 830.9 177.5 L 832.3 179.5 L 823.5 186.3 L 816.7 187.5 L 815.3 185.8 L 815.4 188.3 L 806.7 190.8 L 805.9 193.8 L 805.3 190.3 L 798.2 190.0 L 796.2 188.8 L 796.6 186.8 L 792.4 185.2 L 788.8 187.4 L 782.4 187.6 L 782.5 191.3 L 780.9 189.6 L 778.1 190.3 L 775.5 188.5 L 776.4 186.2 L 774.6 185.6 L 774.5 183.0 L 771.0 183.6 L 771.5 180.2 L 774.0 178.2 L 774.0 173.5 L 771.1 170.8 L 767.5 171.2 L 766.9 168.3 L 762.8 168.6 L 755.3 173.0 L 749.9 171.4 L 746.9 174.1 L 746.1 172.0 L 738.8 172.5 L 727.9 165.8 L 725.3 166.6 L 718.7 163.1 L 717.7 159.7 L 720.1 159.0 L 716.8 151.5 L 711.5 150.5 L 710.5 148.1 L 706.6 146.9 L 708.6 146.2 L 707.9 143.4 L 704.4 141.0 L 707.9 137.5 L 712.0 137.9 L 722.9 133.2 L 724.4 130.1 L 723.5 125.7 L 721.8 125.3 L 729.3 124.6 L 730.6 119.0 L 737.4 119.3 L 738.0 115.8 L 741.8 113.6 L 750.9 117.7 L 752.8 120.6 L 752.4 124.5 L 764.8 127.0 L 767.7 131.4 L 782.1 131.9 L 791.6 134.5 L 804.0 132.1 L 810.9 128.6 L 809.4 126.8 L 810.8 124.8 L 815.5 125.7 L 826.2 120.6 L 832.9 120.4 L 829.1 116.7 L 820.9 116.3 L 824.1 111.6 L 831.2 111.0 L 835.4 105.3 L 833.6 103.4 L 842.5 101.3 L 849.6 103.1 L 854.1 111.5 L 862.6 114.3 L 863.7 117.5 L 874.1 116.1 L 869.7 124.6 L 863.9 125.3 L 864.6 129.5 L 862.5 131.9 Z M 484.6 221.1 L 492.4 223.7 L 490.9 231.1 L 492.2 235.4 L 478.9 237.9 L 479.2 233.8 L 476.0 232.0 L 477.0 226.6 L 478.6 226.6 L 477.2 222.3 L 484.6 221.1 Z M 544.9 243.7 L 544.6 245.4 L 527.7 244.0 L 527.1 239.3 L 523.7 237.3 L 527.2 231.2 L 529.5 230.4 L 531.0 232.1 L 532.9 230.3 L 540.5 218.0 L 539.1 213.7 L 543.5 222.2 L 538.8 223.1 L 543.2 228.4 L 540.4 235.4 L 544.9 243.7 Z M 585.7 240.3 L 585.3 243.2 L 586.9 244.1 L 583.1 247.8 L 580.2 256.7 L 582.0 267.5 L 585.4 272.8 L 580.3 273.6 L 578.9 275.6 L 578.8 282.2 L 580.7 284.3 L 582.8 283.8 L 582.7 287.4 L 575.5 282.3 L 572.3 283.1 L 566.6 280.2 L 561.8 281.0 L 560.4 270.3 L 555.2 269.4 L 553.7 272.2 L 548.8 272.5 L 545.6 266.4 L 533.9 266.0 L 535.6 263.2 L 539.9 262.0 L 540.9 263.6 L 544.4 260.5 L 545.0 256.1 L 549.3 251.5 L 551.6 237.9 L 553.7 236.0 L 562.3 238.6 L 563.9 236.8 L 575.3 235.6 L 578.3 237.9 L 582.1 237.2 L 585.7 240.3 Z M 536.3 262.9 L 533.4 263.9 L 530.9 260.9 L 533.0 260.2 L 532.2 256.5 L 535.1 255.1 L 538.9 256.9 L 540.0 255.3 L 540.2 251.6 L 538.5 250.3 L 540.1 247.5 L 536.6 246.5 L 536.9 244.0 L 544.6 245.4 L 546.1 240.3 L 551.4 240.0 L 549.3 251.5 L 545.0 256.1 L 544.4 260.5 L 540.9 263.6 L 539.9 262.0 L 536.3 262.9 Z M 301.8 217.1 L 298.3 219.5 L 296.1 224.5 L 297.7 224.7 L 299.9 230.5 L 312.5 232.9 L 311.4 237.5 L 312.9 240.7 L 311.4 242.3 L 314.2 246.6 L 312.7 244.2 L 305.9 245.3 L 307.8 248.3 L 305.3 248.4 L 307.1 253.2 L 305.6 261.8 L 303.4 260.6 L 305.2 257.4 L 297.3 256.7 L 292.1 250.6 L 284.9 248.9 L 280.4 245.5 L 285.8 239.1 L 283.5 229.9 L 284.9 226.0 L 286.6 228.0 L 286.3 226.1 L 289.8 223.8 L 292.0 219.2 L 293.3 220.1 L 300.7 215.5 L 301.8 217.1 Z M 270.6 223.4 L 269.7 227.6 L 263.7 221.9 L 263.5 223.4 L 261.9 222.4 L 261.3 219.7 L 267.6 219.7 L 270.6 223.4 Z M 272.6 185.7 L 278.2 186.4 L 294.0 193.8 L 284.0 194.9 L 285.4 192.7 L 272.4 187.0 L 264.1 189.3 L 272.6 185.7 Z M 594.4 152.6 L 590.9 152.3 L 595.6 151.1 L 594.4 152.6 Z M 590.9 152.3 L 594.6 152.8 L 591.7 154.0 L 590.0 153.4 L 590.9 152.3 Z M 552.3 112.5 L 547.1 115.0 L 539.4 115.1 L 533.6 110.4 L 541.6 108.3 L 552.3 112.5 Z M 539.6 100.8 L 541.6 108.1 L 533.6 110.4 L 538.4 114.6 L 535.4 116.4 L 536.2 118.0 L 521.0 117.8 L 522.6 114.0 L 517.6 112.6 L 516.3 108.3 L 516.5 106.1 L 519.5 104.8 L 520.0 101.0 L 526.8 101.1 L 524.1 97.5 L 530.3 100.1 L 534.9 98.7 L 539.6 100.8 Z M 619.2 219.5 L 616.1 219.5 L 616.0 217.8 L 619.8 214.7 L 620.4 216.6 L 618.1 217.9 L 620.1 218.1 L 619.2 219.5 Z M 534.9 95.1 L 532.9 97.9 L 530.5 95.2 L 534.9 95.1 Z M 527.1 97.7 L 524.1 97.5 L 522.7 92.8 L 529.1 89.9 L 528.6 92.7 L 530.3 93.5 L 526.6 95.9 L 527.1 97.7 Z M 300.6 199.9 L 301.1 194.8 L 310.1 198.3 L 302.6 199.3 L 301.5 201.0 L 300.6 199.9 Z M 526.4 166.1 L 527.5 176.1 L 526.2 177.6 L 528.5 181.7 L 532.0 182.5 L 533.2 184.7 L 516.2 195.9 L 509.6 197.3 L 508.7 194.9 L 475.8 174.2 L 476.9 169.5 L 489.6 164.1 L 489.4 162.0 L 496.5 160.8 L 493.7 152.5 L 503.5 148.6 L 523.8 147.4 L 520.8 156.0 L 525.1 160.8 L 526.4 166.1 Z M 246.4 249.9 L 246.8 252.8 L 246.4 249.9 Z M 290.8 250.3 L 290.0 254.3 L 282.3 259.4 L 280.4 263.8 L 276.3 262.2 L 278.5 257.2 L 278.1 255.8 L 276.9 257.6 L 275.1 256.3 L 275.2 253.0 L 277.6 247.7 L 280.9 246.0 L 290.8 250.3 Z M 595.1 163.3 L 596.9 168.1 L 595.0 172.9 L 589.9 167.7 L 599.4 183.5 L 599.2 186.3 L 602.4 188.9 L 569.4 188.9 L 569.7 162.2 L 580.7 164.4 L 586.3 162.2 L 595.1 163.3 Z M 619.8 214.7 L 617.7 215.4 L 611.5 209.9 L 605.2 208.8 L 604.4 210.7 L 601.4 210.4 L 602.8 202.6 L 607.2 200.0 L 610.5 208.0 L 619.8 214.7 Z M 508.7 139.5 L 508.5 140.9 L 506.6 140.1 L 508.7 139.5 Z M 494.9 129.5 L 508.9 132.2 L 509.0 133.5 L 502.0 136.6 L 499.0 140.2 L 500.6 142.3 L 493.8 147.9 L 484.3 150.0 L 479.3 146.7 L 480.5 141.5 L 479.0 139.9 L 482.6 134.5 L 475.2 133.5 L 474.4 130.1 L 478.5 128.5 L 494.9 129.5 Z M 562.8 87.2 L 564.8 87.7 L 561.1 89.1 L 560.7 87.5 L 562.8 87.2 Z M 577.8 84.8 L 576.0 90.2 L 567.7 89.3 L 568.2 88.0 L 565.1 86.4 L 570.9 84.4 L 577.8 84.8 Z M 617.7 215.4 L 616.1 219.5 L 619.2 219.5 L 620.5 223.7 L 633.3 227.8 L 624.8 236.4 L 616.3 239.0 L 613.2 238.2 L 609.7 240.4 L 605.8 239.9 L 599.9 237.5 L 596.4 231.5 L 591.7 228.1 L 594.7 226.2 L 595.2 220.8 L 600.3 214.7 L 601.4 210.4 L 604.4 210.7 L 605.2 208.8 L 611.7 209.9 L 617.7 215.4 Z M 580.5 58.3 L 579.3 60.2 L 583.3 62.0 L 580.7 64.2 L 583.6 67.3 L 582.2 69.5 L 584.8 72.0 L 583.3 73.0 L 586.9 76.2 L 576.9 82.0 L 563.8 83.8 L 559.5 81.7 L 558.7 75.7 L 570.2 69.9 L 570.4 68.1 L 565.8 66.0 L 565.7 61.3 L 557.3 58.2 L 569.3 59.5 L 572.2 56.6 L 577.5 55.4 L 581.5 57.0 L 580.5 58.3 Z M 995.2 298.3 L 996.1 300.3 L 992.3 300.0 L 995.2 298.3 Z M 999.9 294.9 L 999.7 296.5 L 995.8 296.7 L 999.9 294.9 Z M 332.5 393.0 L 335.3 392.9 L 331.8 395.0 L 330.6 394.6 L 332.5 393.0 Z M 336.4 392.5 L 339.3 393.7 L 334.2 394.9 L 336.4 392.5 Z M 526.3 131.1 L 525.5 135.1 L 523.8 132.4 L 526.3 131.1 Z M 516.1 112.4 L 522.6 114.0 L 521.2 117.8 L 516.6 121.7 L 518.8 121.1 L 519.1 126.7 L 521.3 127.7 L 517.0 130.4 L 510.9 129.0 L 507.4 132.4 L 495.8 130.4 L 496.9 123.5 L 498.1 124.8 L 496.7 121.4 L 494.4 118.6 L 486.7 115.5 L 495.9 114.9 L 494.7 112.0 L 501.2 112.7 L 507.0 108.1 L 516.1 112.4 Z M 356.4 238.8 L 353.0 243.9 L 348.2 243.6 L 350.1 234.0 L 356.4 238.8 Z M 526.6 247.1 L 531.5 247.2 L 531.5 243.6 L 536.9 243.9 L 536.6 246.5 L 540.1 247.5 L 538.5 250.3 L 540.2 251.6 L 539.4 256.5 L 534.6 255.3 L 532.2 256.5 L 533.0 260.2 L 530.9 260.9 L 524.2 251.7 L 525.8 249.2 L 527.8 249.5 L 525.9 248.5 L 526.6 247.1 Z M 482.6 99.8 L 477.3 98.7 L 482.9 96.6 L 484.7 98.8 L 482.6 99.8 Z M 482.8 90.3 L 483.2 91.6 L 481.1 90.4 L 482.8 90.3 Z M 491.3 87.5 L 488.4 90.1 L 495.0 90.4 L 490.6 94.4 L 495.3 95.7 L 499.7 99.7 L 500.1 103.0 L 504.6 103.5 L 501.6 106.9 L 503.9 107.9 L 484.3 111.0 L 492.3 106.8 L 485.3 105.9 L 488.4 104.7 L 488.5 103.0 L 486.9 103.3 L 488.0 102.4 L 491.3 102.1 L 492.0 99.7 L 490.4 97.4 L 485.9 97.9 L 486.9 94.6 L 484.0 96.3 L 485.5 92.4 L 482.9 92.5 L 486.0 87.3 L 491.3 87.5 Z M 625.0 135.3 L 615.5 134.8 L 615.0 131.3 L 611.0 129.4 L 627.0 132.0 L 629.5 135.7 L 625.0 135.3 Z M 491.3 235.9 L 490.9 231.1 L 492.9 227.2 L 492.0 219.5 L 499.7 219.1 L 501.5 231.1 L 503.3 233.1 L 494.3 236.8 L 491.3 235.9 Z M 477.7 221.8 L 478.6 226.6 L 474.6 230.0 L 473.1 226.5 L 470.2 226.8 L 468.8 222.3 L 463.0 224.9 L 458.1 219.7 L 461.8 217.4 L 461.8 214.8 L 470.2 217.0 L 474.1 215.3 L 477.7 221.8 Z M 453.9 212.3 L 461.5 212.8 L 453.3 213.7 L 457.0 212.6 L 453.9 212.3 Z M 453.5 215.7 L 461.8 214.8 L 461.8 217.4 L 458.1 219.7 L 456.8 217.4 L 458.0 216.8 L 453.5 215.7 Z M 527.2 243.6 L 531.5 244.0 L 531.5 247.2 L 526.1 246.9 L 527.2 243.6 Z M 566.2 151.3 L 573.0 152.4 L 568.9 153.0 L 566.2 151.3 Z M 565.0 141.8 L 568.3 144.4 L 565.0 141.8 Z M 555.6 139.7 L 558.2 136.6 L 563.3 135.2 L 574.0 135.0 L 572.3 136.9 L 566.0 136.9 L 566.5 139.0 L 562.9 137.5 L 564.8 141.2 L 563.0 142.1 L 566.8 144.6 L 563.1 145.7 L 564.1 148.7 L 560.8 148.0 L 558.7 144.7 L 564.4 144.1 L 558.6 143.4 L 558.7 141.6 L 555.6 139.7 Z M 353.4 55.7 L 355.7 56.7 L 351.1 57.7 L 347.4 56.4 L 348.9 54.7 L 353.4 55.7 Z M 429.3 53.0 L 422.0 54.1 L 429.3 53.0 Z M 347.1 47.8 L 343.8 48.0 L 347.1 47.8 Z M 449.9 40.5 L 451.6 41.6 L 447.4 41.5 L 449.9 40.5 Z M 300.8 35.2 L 298.5 35.0 L 300.8 35.2 Z M 451.0 28.3 L 446.7 28.2 L 451.0 28.3 Z M 375.3 22.0 L 368.5 20.8 L 375.3 22.0 Z M 416.7 17.9 L 428.3 18.7 L 410.9 19.5 L 439.7 20.3 L 416.9 22.1 L 440.6 22.1 L 440.9 23.4 L 435.5 25.4 L 445.4 23.2 L 468.2 23.7 L 443.9 27.8 L 447.2 30.0 L 441.2 31.5 L 439.5 34.2 L 445.8 34.1 L 443.1 34.9 L 449.0 36.3 L 437.1 37.0 L 444.7 38.6 L 445.7 41.2 L 439.1 41.7 L 444.4 41.7 L 446.3 43.6 L 438.8 42.9 L 438.0 44.4 L 443.3 44.9 L 442.6 45.9 L 432.8 45.1 L 423.3 46.9 L 438.7 47.5 L 438.0 49.7 L 431.5 47.1 L 425.9 48.0 L 431.0 47.5 L 430.1 49.1 L 438.9 50.7 L 437.5 51.7 L 439.5 51.5 L 440.1 54.1 L 424.5 51.2 L 428.4 52.3 L 419.3 54.3 L 438.0 55.5 L 426.7 59.2 L 410.1 59.9 L 410.6 61.2 L 403.7 65.5 L 395.0 67.8 L 396.4 65.9 L 394.2 65.6 L 393.8 67.5 L 388.3 67.9 L 389.0 69.1 L 385.8 69.2 L 388.3 70.9 L 384.4 71.4 L 387.3 73.0 L 380.9 75.8 L 382.9 78.2 L 381.3 81.2 L 377.9 81.7 L 380.1 83.2 L 377.9 83.8 L 372.0 81.6 L 372.5 80.0 L 365.9 81.1 L 367.2 80.6 L 363.0 78.9 L 364.3 77.6 L 362.0 77.8 L 360.1 76.5 L 360.8 75.1 L 356.9 73.2 L 360.1 71.8 L 357.1 71.0 L 360.7 70.3 L 358.4 68.9 L 358.9 70.2 L 355.2 71.1 L 354.0 68.6 L 358.0 67.3 L 352.1 67.8 L 351.6 66.5 L 357.5 64.4 L 351.2 66.3 L 354.4 64.2 L 350.5 62.8 L 359.3 62.4 L 350.7 62.4 L 352.3 60.6 L 357.7 60.2 L 351.6 60.3 L 358.4 59.3 L 360.1 55.5 L 348.5 53.8 L 359.1 54.5 L 356.2 52.8 L 358.2 52.8 L 352.7 52.3 L 355.7 51.0 L 351.5 51.2 L 351.1 49.8 L 350.0 51.5 L 345.5 51.2 L 347.6 49.0 L 345.5 48.8 L 347.9 47.6 L 345.3 47.2 L 346.2 46.1 L 343.7 44.1 L 340.9 44.1 L 343.7 43.0 L 329.9 38.5 L 310.1 38.7 L 306.9 37.8 L 310.7 37.1 L 302.3 35.9 L 315.7 34.6 L 297.6 32.8 L 316.7 30.2 L 321.6 27.5 L 313.8 26.7 L 329.3 24.7 L 332.0 22.5 L 342.5 24.0 L 335.3 22.2 L 348.4 21.3 L 351.5 23.1 L 352.6 21.3 L 362.0 22.6 L 358.4 21.2 L 360.9 20.9 L 375.7 22.8 L 376.8 20.9 L 373.4 20.2 L 384.8 20.1 L 371.7 19.3 L 416.7 17.9 Z M 254.8 206.3 L 249.7 211.9 L 243.7 209.6 L 245.1 205.4 L 248.7 205.4 L 246.0 202.1 L 247.2 200.6 L 252.3 200.6 L 252.0 205.9 L 254.8 206.3 Z M 343.0 244.6 L 336.5 246.7 L 333.9 244.7 L 334.1 237.8 L 329.4 233.6 L 333.2 226.3 L 337.1 229.1 L 337.2 231.6 L 341.0 232.9 L 338.7 238.9 L 343.0 244.6 Z M 268.9 208.4 L 263.9 209.0 L 258.1 213.9 L 251.7 210.0 L 256.3 205.8 L 263.9 205.6 L 268.9 208.4 Z M 549.1 130.9 L 551.4 132.2 L 549.1 130.9 Z M 552.5 122.4 L 553.9 124.5 L 552.6 125.4 L 543.9 124.5 L 548.8 130.8 L 537.5 123.7 L 542.6 123.7 L 545.3 120.7 L 552.5 122.4 Z M 300.5 195.3 L 300.6 199.9 L 293.0 198.8 L 298.8 198.5 L 296.0 195.0 L 300.5 195.3 Z M 563.5 116.8 L 558.7 121.5 L 551.2 122.9 L 544.7 119.8 L 547.7 116.6 L 559.6 115.1 L 563.5 116.8 Z M 833.3 276.1 L 835.2 278.4 L 830.6 276.9 L 833.3 276.1 Z M 844.5 276.0 L 847.6 275.2 L 844.0 278.7 L 844.5 276.0 Z M 841.0 274.0 L 832.8 274.2 L 841.2 272.5 L 841.0 274.0 Z M 828.4 273.1 L 830.7 274.3 L 824.3 274.9 L 828.4 273.1 Z M 820.7 272.7 L 820.0 274.6 L 817.9 272.7 L 820.7 272.7 Z M 884.8 273.0 L 882.3 273.3 L 885.4 270.5 L 884.8 273.0 Z M 816.2 269.8 L 813.1 269.7 L 816.2 269.8 Z M 798.2 266.7 L 802.1 268.9 L 808.2 267.9 L 812.6 269.3 L 813.9 271.3 L 817.7 271.6 L 818.3 274.4 L 795.9 270.6 L 792.3 268.8 L 794.6 266.4 L 798.2 266.7 Z M 842.1 262.7 L 840.6 265.8 L 842.1 262.7 Z M 852.4 258.6 L 852.6 260.5 L 850.1 259.5 L 852.4 258.6 Z M 860.4 258.0 L 863.3 260.7 L 855.2 259.7 L 856.1 258.0 L 860.4 258.0 Z M 876.3 254.4 L 880.2 255.0 L 876.3 254.4 Z M 794.5 254.7 L 796.3 258.6 L 792.0 255.7 L 794.5 254.7 Z M 891.6 257.3 L 891.6 275.4 L 888.7 272.5 L 885.7 272.8 L 885.7 269.1 L 881.3 263.8 L 872.1 260.6 L 871.5 258.5 L 869.0 261.2 L 866.5 257.8 L 872.0 255.9 L 867.5 256.3 L 863.8 254.0 L 867.7 251.0 L 872.3 252.2 L 872.7 256.5 L 875.2 259.3 L 882.8 254.1 L 891.6 257.3 Z M 863.3 250.0 L 864.6 251.1 L 861.7 250.6 L 863.3 250.0 Z M 846.9 247.2 L 845.0 249.0 L 833.8 249.3 L 835.2 253.8 L 842.8 252.2 L 837.0 255.4 L 841.3 262.2 L 837.7 263.3 L 835.1 257.4 L 834.5 265.6 L 831.8 265.4 L 832.3 261.2 L 829.9 257.6 L 834.0 247.3 L 844.2 247.7 L 847.2 245.3 L 846.9 247.2 Z M 854.8 247.7 L 857.5 245.8 L 856.2 248.0 L 858.0 249.4 L 855.2 249.0 L 856.3 252.4 L 853.9 246.9 L 855.6 243.9 L 854.8 247.7 Z M 804.5 244.4 L 806.9 247.6 L 818.1 246.0 L 821.3 238.4 L 825.2 238.0 L 827.1 239.7 L 825.3 240.0 L 827.2 244.4 L 830.5 247.3 L 827.5 247.0 L 826.6 252.1 L 823.0 254.9 L 822.9 258.7 L 818.6 261.6 L 818.1 259.4 L 814.0 258.2 L 810.7 259.9 L 810.2 258.0 L 806.2 258.3 L 802.5 248.5 L 804.5 244.4 Z M 768.0 235.5 L 770.9 235.6 L 785.5 249.4 L 788.0 249.2 L 787.3 251.6 L 789.9 252.9 L 790.6 257.1 L 792.7 256.6 L 794.6 258.8 L 793.7 266.2 L 790.5 266.4 L 782.3 259.1 L 773.8 244.7 L 765.2 236.8 L 764.5 234.6 L 768.0 235.5 Z M 757.5 218.0 L 758.5 212.4 L 757.5 218.0 Z M 720.4 163.6 L 725.0 166.2 L 723.1 170.4 L 740.8 176.6 L 744.6 176.6 L 746.0 172.0 L 747.6 175.5 L 755.7 175.4 L 754.5 172.9 L 762.8 168.6 L 766.9 168.3 L 767.5 171.2 L 770.4 172.3 L 769.7 174.7 L 764.2 176.2 L 761.6 183.4 L 759.2 183.3 L 758.1 188.9 L 756.2 184.3 L 754.5 186.2 L 753.2 184.5 L 756.9 180.8 L 749.5 179.8 L 749.1 177.2 L 745.4 176.3 L 744.7 178.2 L 747.1 179.9 L 744.5 181.6 L 746.5 182.7 L 747.3 189.9 L 746.2 188.6 L 744.8 189.9 L 744.3 188.2 L 740.9 193.6 L 736.8 195.2 L 728.5 204.0 L 723.0 206.4 L 721.8 221.3 L 715.3 227.6 L 712.6 225.3 L 703.7 204.3 L 702.2 188.3 L 696.4 192.4 L 691.6 188.1 L 695.8 185.9 L 692.3 186.6 L 689.3 183.8 L 697.2 182.4 L 693.1 174.7 L 695.5 172.2 L 699.6 172.3 L 709.2 160.5 L 705.5 157.8 L 705.4 153.8 L 710.3 154.2 L 716.8 151.5 L 719.4 154.8 L 720.0 159.8 L 717.7 159.7 L 720.4 163.6 Z M 479.9 97.0 L 477.3 98.7 L 482.8 100.0 L 482.3 104.9 L 471.8 106.7 L 471.1 105.0 L 475.5 103.7 L 472.8 104.0 L 475.1 102.2 L 471.9 101.6 L 473.3 100.6 L 471.9 99.4 L 479.9 97.0 Z M 628.1 142.0 L 633.3 139.8 L 636.3 145.4 L 643.8 148.3 L 649.9 147.7 L 649.7 146.3 L 657.4 143.7 L 669.8 148.2 L 668.2 158.2 L 668.9 162.6 L 671.7 164.1 L 669.0 167.1 L 674.3 171.5 L 675.4 176.0 L 671.8 177.1 L 670.6 180.3 L 660.5 178.8 L 657.6 174.7 L 649.2 175.8 L 642.4 171.9 L 639.1 166.1 L 634.5 166.6 L 631.6 160.0 L 626.1 155.7 L 628.5 150.6 L 626.1 150.0 L 622.8 144.8 L 623.6 139.6 L 628.1 142.0 Z M 633.3 166.8 L 631.2 166.6 L 628.8 169.3 L 624.1 168.9 L 616.1 163.3 L 608.7 160.8 L 607.7 157.3 L 613.8 154.4 L 614.7 149.0 L 618.7 146.3 L 624.3 146.8 L 628.5 150.6 L 626.1 155.7 L 632.8 161.7 L 634.8 166.8 L 633.3 166.8 Z M 456.7 66.1 L 459.1 65.7 L 458.7 67.4 L 462.2 69.3 L 448.1 73.9 L 437.0 72.7 L 439.9 70.5 L 433.2 69.8 L 439.2 68.2 L 431.9 68.0 L 435.1 67.4 L 434.5 66.3 L 437.6 66.9 L 436.2 65.5 L 440.5 66.7 L 441.3 68.7 L 443.5 66.4 L 456.7 66.1 Z M 598.7 160.0 L 597.2 160.2 L 596.9 162.9 L 598.5 162.6 L 596.9 168.1 L 595.1 163.3 L 597.5 158.1 L 599.6 157.2 L 598.7 160.0 Z M 543.3 143.8 L 542.0 148.1 L 534.5 145.0 L 543.3 143.8 Z M 526.8 136.5 L 526.6 141.2 L 524.0 141.9 L 522.8 136.4 L 526.8 136.5 Z M 538.1 120.8 L 538.5 123.4 L 534.1 123.8 L 534.4 127.2 L 540.4 132.7 L 551.3 138.3 L 547.0 137.6 L 545.9 139.6 L 547.7 141.7 L 544.6 144.6 L 543.6 138.9 L 530.8 132.2 L 528.3 127.9 L 524.3 126.6 L 520.8 128.5 L 518.4 124.8 L 519.5 122.4 L 523.4 121.0 L 525.1 122.7 L 529.0 119.8 L 538.1 120.8 Z M 285.3 198.8 L 288.2 200.3 L 283.9 200.4 L 282.3 199.1 L 285.3 198.8 Z M 597.1 167.9 L 598.9 159.2 L 602.3 160.2 L 607.7 157.3 L 609.1 160.5 L 602.7 162.6 L 605.5 165.3 L 604.1 166.7 L 600.2 168.9 L 597.1 167.9 Z M 864.3 156.7 L 866.7 158.6 L 863.0 163.9 L 863.2 161.9 L 861.5 162.8 L 862.9 159.4 L 861.7 157.9 L 860.4 159.6 L 859.9 157.7 L 864.3 156.7 Z M 873.2 154.9 L 872.7 157.7 L 868.4 159.0 L 866.9 157.4 L 873.2 154.9 Z M 892.3 135.1 L 894.4 140.0 L 891.5 144.0 L 891.3 150.8 L 889.7 152.4 L 888.3 152.9 L 888.8 150.9 L 885.6 153.9 L 885.6 152.5 L 883.8 153.9 L 879.8 152.7 L 880.1 154.7 L 876.9 157.0 L 876.1 153.9 L 874.2 153.4 L 863.6 155.7 L 869.2 151.4 L 877.5 151.1 L 880.1 146.2 L 881.4 145.8 L 881.2 147.9 L 884.2 146.6 L 888.2 142.3 L 888.6 137.2 L 892.3 135.1 Z M 899.5 127.5 L 903.7 126.9 L 904.2 130.1 L 899.9 130.9 L 897.8 133.4 L 890.2 131.8 L 892.0 133.9 L 888.8 134.5 L 889.9 129.8 L 892.7 129.8 L 893.4 124.0 L 899.5 127.5 Z M 742.5 113.7 L 738.0 115.8 L 737.4 119.3 L 730.6 119.0 L 729.3 124.6 L 721.8 125.3 L 723.5 125.7 L 724.4 130.1 L 722.8 132.8 L 706.1 129.9 L 704.1 132.2 L 697.9 131.3 L 690.2 137.2 L 685.3 135.6 L 683.6 130.6 L 680.3 128.6 L 672.2 129.2 L 662.6 123.5 L 655.5 125.0 L 655.5 135.3 L 650.3 132.4 L 645.8 134.0 L 646.0 131.1 L 642.5 130.1 L 639.6 126.3 L 643.2 126.3 L 641.7 125.4 L 642.8 124.0 L 647.8 124.1 L 647.4 119.9 L 642.1 119.2 L 636.7 121.3 L 629.5 115.1 L 631.7 110.1 L 635.6 111.2 L 635.1 109.4 L 641.1 106.3 L 648.1 107.0 L 651.4 109.7 L 652.0 108.3 L 670.1 109.0 L 671.0 107.4 L 666.7 105.7 L 669.4 103.0 L 672.3 102.9 L 669.8 100.1 L 691.6 96.1 L 696.5 96.4 L 697.5 99.4 L 704.7 99.9 L 703.8 101.5 L 713.4 98.8 L 712.4 100.0 L 722.2 109.0 L 724.2 107.5 L 726.3 109.1 L 731.5 108.3 L 736.7 112.2 L 740.9 111.8 L 742.5 113.7 Z M 616.3 239.0 L 613.8 242.1 L 613.8 252.4 L 615.4 254.7 L 611.7 257.5 L 609.4 262.9 L 594.2 252.8 L 597.2 245.1 L 594.4 238.3 L 598.0 234.8 L 599.9 237.5 L 605.8 239.9 L 616.3 239.0 Z M 704.5 140.5 L 692.5 140.2 L 693.1 138.6 L 703.1 136.7 L 695.0 134.7 L 697.9 131.3 L 704.1 132.2 L 706.1 129.9 L 722.8 132.8 L 712.0 137.9 L 707.9 137.5 L 704.5 140.5 Z M 785.9 217.5 L 784.2 212.4 L 786.2 210.4 L 794.6 211.4 L 795.0 209.8 L 798.7 209.3 L 798.7 215.5 L 794.0 217.7 L 794.9 220.0 L 787.9 220.8 L 785.9 217.5 Z M 851.7 145.1 L 856.6 142.7 L 859.5 147.1 L 858.9 152.3 L 851.4 154.7 L 852.1 150.4 L 850.4 147.9 L 852.7 147.4 L 851.7 145.1 Z M 557.1 133.7 L 555.6 131.3 L 557.2 130.1 L 560.4 131.5 L 557.1 133.7 Z M 634.5 170.8 L 629.2 169.2 L 632.6 166.5 L 634.5 170.8 Z M 798.6 209.2 L 794.6 211.4 L 792.3 210.6 L 793.4 206.4 L 788.7 199.2 L 780.3 201.2 L 781.1 195.7 L 778.1 193.4 L 780.9 190.1 L 782.8 191.1 L 782.4 187.6 L 786.4 192.0 L 790.5 192.6 L 791.4 194.4 L 788.6 196.5 L 798.3 205.5 L 798.6 209.2 Z M 599.9 153.8 L 601.5 155.2 L 597.5 158.1 L 599.9 153.8 Z M 467.9 230.8 L 473.1 226.5 L 473.6 229.4 L 476.1 228.7 L 476.0 232.0 L 479.2 233.8 L 478.9 237.9 L 467.9 230.8 Z M 569.4 188.9 L 569.4 194.5 L 566.6 194.5 L 566.6 195.9 L 544.4 184.9 L 539.4 187.2 L 533.2 184.7 L 532.0 182.5 L 528.5 181.7 L 526.2 177.6 L 527.5 172.8 L 525.9 166.4 L 532.0 160.0 L 532.0 157.8 L 542.2 160.0 L 543.6 162.7 L 553.1 165.9 L 558.5 159.0 L 569.3 161.3 L 569.4 188.9 Z M 722.2 222.8 L 727.4 229.8 L 727.0 232.0 L 723.6 233.5 L 721.8 231.0 L 723.4 223.7 L 722.2 222.8 Z M 577.0 330.4 L 579.5 329.4 L 581.6 331.2 L 577.8 335.2 L 575.1 332.4 L 577.0 330.4 Z M 573.9 95.4 L 571.6 99.5 L 565.4 100.2 L 562.7 97.1 L 559.0 96.5 L 558.5 94.3 L 569.2 93.4 L 573.9 95.4 Z M 578.2 94.1 L 573.7 95.4 L 569.2 93.4 L 558.5 94.3 L 558.4 92.7 L 560.4 90.1 L 566.5 91.7 L 569.7 88.7 L 576.4 90.3 L 578.2 94.1 Z M 493.7 152.5 L 496.5 160.8 L 489.4 162.0 L 489.6 164.1 L 476.9 169.5 L 475.5 174.7 L 468.3 175.3 L 465.5 180.9 L 461.3 184.2 L 459.2 190.0 L 452.7 190.5 L 459.7 177.4 L 463.9 172.5 L 470.8 169.3 L 474.2 159.6 L 480.7 155.7 L 483.4 150.6 L 493.7 152.5 Z M 573.9 116.0 L 580.9 116.8 L 583.7 121.1 L 580.4 121.0 L 578.4 123.8 L 578.0 119.5 L 573.9 116.0 Z M 637.6 284.6 L 640.0 293.4 L 637.9 293.2 L 638.4 296.1 L 631.0 318.9 L 625.3 321.0 L 622.2 319.3 L 620.1 311.9 L 623.3 305.7 L 622.2 298.3 L 623.4 295.1 L 630.8 292.9 L 635.5 284.7 L 637.6 284.6 Z M 254.7 198.7 L 252.3 200.6 L 247.2 200.6 L 246.0 202.1 L 248.7 205.4 L 245.1 205.4 L 243.7 209.6 L 237.8 204.8 L 231.8 206.5 L 212.6 199.1 L 206.9 194.5 L 207.7 190.3 L 206.1 187.2 L 196.1 178.6 L 196.4 176.3 L 188.4 169.4 L 185.9 163.4 L 180.7 161.4 L 181.5 166.3 L 190.0 175.8 L 192.5 182.4 L 196.0 184.8 L 194.4 186.4 L 188.6 181.0 L 187.8 177.2 L 180.5 173.0 L 182.9 173.2 L 182.9 170.6 L 178.6 167.4 L 174.6 159.7 L 181.3 159.1 L 191.5 163.0 L 204.3 161.8 L 212.6 169.3 L 218.3 167.4 L 224.6 176.5 L 230.1 177.9 L 228.1 187.5 L 233.5 197.8 L 237.3 199.5 L 245.7 198.8 L 248.9 191.7 L 257.9 189.9 L 258.8 191.7 L 255.9 199.3 L 255.4 197.7 L 254.7 198.7 Z M 563.6 135.2 L 558.2 136.6 L 556.8 134.7 L 561.9 132.4 L 563.6 135.2 Z M 500.6 208.6 L 497.8 208.2 L 490.3 213.4 L 488.6 212.9 L 484.6 221.1 L 481.4 220.4 L 480.5 221.8 L 477.7 221.8 L 474.6 215.5 L 468.2 216.4 L 465.8 208.9 L 468.0 206.6 L 469.5 207.9 L 484.6 207.0 L 481.6 180.6 L 486.5 180.6 L 508.7 194.9 L 509.0 197.2 L 511.7 196.8 L 510.6 206.5 L 500.6 208.6 Z M 780.9 190.1 L 778.1 193.6 L 772.2 195.2 L 770.5 198.6 L 774.7 204.6 L 772.7 207.9 L 776.7 217.3 L 773.8 222.2 L 774.6 217.5 L 771.3 204.0 L 769.3 201.9 L 764.9 206.3 L 763.0 204.4 L 761.7 205.5 L 762.7 201.2 L 759.7 196.2 L 761.1 196.0 L 756.0 190.9 L 758.8 188.1 L 759.3 183.1 L 761.6 183.4 L 764.2 176.2 L 769.7 174.7 L 771.1 170.8 L 774.0 173.5 L 774.2 176.6 L 771.0 183.6 L 774.5 183.0 L 774.6 185.6 L 776.4 186.2 L 775.5 188.5 L 780.9 190.1 Z M 556.5 131.1 L 553.7 133.7 L 551.2 131.9 L 552.7 129.1 L 556.5 131.1 Z M 743.9 113.5 L 756.5 108.7 L 770.4 111.9 L 772.8 110.5 L 771.7 108.2 L 774.7 105.3 L 783.6 107.4 L 785.7 110.2 L 796.4 110.3 L 801.7 113.0 L 807.8 113.5 L 817.5 110.4 L 822.8 111.1 L 824.1 111.6 L 821.1 117.0 L 829.1 116.7 L 833.0 120.2 L 826.2 120.6 L 815.5 125.7 L 810.8 124.8 L 809.4 126.8 L 810.9 128.6 L 806.6 131.2 L 791.6 134.5 L 782.1 131.9 L 767.7 131.4 L 764.8 127.0 L 752.4 124.5 L 752.4 119.6 L 743.9 113.5 Z M 589.2 324.6 L 586.9 312.3 L 591.7 305.4 L 591.5 296.4 L 584.5 294.5 L 583.9 291.7 L 592.2 289.0 L 595.4 290.1 L 595.1 294.2 L 598.0 297.6 L 599.7 291.4 L 596.0 287.1 L 596.2 282.3 L 604.3 282.4 L 612.4 279.1 L 612.7 293.0 L 596.4 304.8 L 598.6 316.9 L 591.5 320.8 L 591.3 324.6 L 589.2 324.6 Z M 465.8 208.9 L 459.5 203.7 L 454.8 204.1 L 454.0 206.0 L 454.9 193.9 L 452.8 190.8 L 463.7 190.8 L 463.3 186.8 L 466.5 184.8 L 466.5 177.8 L 475.8 177.8 L 475.8 174.2 L 486.5 180.6 L 481.6 180.6 L 484.6 207.0 L 469.5 207.9 L 468.0 206.6 L 465.8 208.9 Z M 597.1 282.2 L 595.4 283.8 L 596.0 287.1 L 599.7 291.4 L 598.0 297.6 L 595.1 294.2 L 595.5 290.1 L 593.4 290.5 L 590.7 287.8 L 593.5 279.5 L 591.4 276.2 L 595.3 277.0 L 597.1 282.2 Z M 778.1 232.1 L 780.7 232.7 L 780.8 234.4 L 784.1 232.8 L 786.4 235.0 L 789.6 246.2 L 781.3 242.0 L 778.1 232.1 Z M 826.6 238.4 L 821.7 238.0 L 818.1 246.0 L 806.9 247.6 L 804.2 244.7 L 808.9 246.1 L 809.7 242.4 L 814.0 241.1 L 816.8 237.3 L 818.5 238.8 L 819.5 236.4 L 820.3 237.9 L 824.3 230.7 L 831.3 235.3 L 826.6 238.4 Z M 570.2 299.5 L 565.5 301.3 L 564.5 300.0 L 558.3 300.9 L 558.3 311.0 L 555.5 311.1 L 555.5 329.0 L 550.9 330.3 L 547.4 327.9 L 545.7 329.5 L 544.1 328.2 L 541.6 323.1 L 540.2 312.4 L 532.6 297.9 L 570.2 299.5 Z M 956.1 306.3 L 963.8 312.0 L 956.1 306.3 Z M 537.8 211.9 L 526.7 214.4 L 513.4 211.8 L 510.0 217.5 L 502.7 213.8 L 500.5 209.3 L 509.7 207.4 L 511.6 204.0 L 511.7 196.8 L 516.2 195.9 L 533.2 184.7 L 539.4 187.2 L 541.6 186.1 L 544.3 193.6 L 543.0 203.1 L 538.3 208.5 L 537.8 211.9 Z M 537.8 211.9 L 540.5 218.0 L 531.5 232.0 L 528.2 230.6 L 523.8 236.8 L 517.1 238.1 L 512.3 232.4 L 507.5 232.3 L 507.7 224.9 L 510.7 220.6 L 509.7 218.1 L 511.6 212.6 L 515.3 211.5 L 519.3 213.9 L 526.7 214.4 L 537.8 211.9 Z M 267.6 219.7 L 261.7 219.3 L 256.4 214.0 L 264.2 208.9 L 268.9 208.4 L 267.6 219.7 Z M 520.0 102.0 L 518.9 105.6 L 516.5 106.1 L 516.6 109.1 L 509.6 106.9 L 511.9 107.0 L 513.2 102.9 L 520.0 102.0 Z M 543.8 59.6 L 539.6 60.6 L 544.1 57.6 L 543.8 59.6 Z M 548.6 56.7 L 549.9 57.8 L 546.7 58.1 L 548.6 56.7 Z M 553.5 55.4 L 550.2 56.6 L 553.5 55.4 Z M 565.1 53.3 L 561.1 53.8 L 565.1 53.3 Z M 585.7 56.2 L 580.5 58.3 L 580.9 56.5 L 573.8 55.8 L 569.3 59.5 L 559.6 57.6 L 555.9 58.3 L 555.7 60.1 L 550.4 59.7 L 540.4 66.3 L 537.9 70.6 L 539.1 72.0 L 533.8 73.4 L 533.8 78.6 L 535.8 79.6 L 532.3 86.4 L 529.3 84.2 L 528.3 86.1 L 519.5 88.9 L 515.3 86.9 L 517.7 86.1 L 517.1 84.8 L 514.3 85.5 L 518.9 82.0 L 514.3 84.4 L 515.8 83.0 L 513.9 80.5 L 521.1 80.0 L 514.8 80.3 L 513.8 78.1 L 518.7 78.2 L 514.3 77.3 L 522.5 75.7 L 518.8 75.6 L 523.2 74.9 L 523.8 73.3 L 531.6 72.8 L 526.7 72.8 L 535.4 68.9 L 533.7 68.5 L 535.5 66.4 L 539.0 65.9 L 536.7 64.9 L 542.8 63.4 L 540.2 63.2 L 543.6 62.5 L 541.1 61.7 L 548.8 59.9 L 545.9 59.6 L 550.5 57.1 L 556.5 55.7 L 556.1 57.3 L 563.0 54.5 L 564.9 55.6 L 568.5 52.8 L 571.6 53.2 L 569.6 55.3 L 576.7 52.6 L 578.9 52.9 L 578.3 54.3 L 580.8 53.2 L 585.9 54.5 L 579.9 55.2 L 585.7 56.2 Z M 725.0 166.2 L 727.9 165.8 L 738.8 172.5 L 744.7 172.6 L 744.6 176.6 L 736.6 175.7 L 723.1 170.4 L 725.0 166.2 Z M 980.8 364.7 L 983.9 363.9 L 984.1 366.0 L 979.5 370.2 L 980.7 371.9 L 975.8 373.1 L 974.4 377.4 L 969.7 379.6 L 962.4 377.7 L 975.8 368.0 L 979.0 362.8 L 980.8 364.7 Z M 981.3 347.1 L 984.2 347.9 L 985.3 352.4 L 987.6 353.3 L 987.3 351.4 L 989.1 354.6 L 995.9 354.7 L 994.1 359.0 L 991.8 359.0 L 987.1 365.5 L 985.0 364.7 L 986.5 361.4 L 982.6 359.2 L 984.9 357.9 L 985.9 353.1 L 981.3 347.1 Z M 647.4 203.8 L 644.4 197.3 L 652.7 194.5 L 654.5 188.9 L 653.3 186.0 L 655.5 183.2 L 655.0 180.8 L 656.6 180.6 L 666.2 188.1 L 660.7 193.8 L 660.6 197.2 L 652.9 202.7 L 647.4 203.8 Z M 714.0 152.5 L 705.4 153.8 L 705.5 157.8 L 709.2 160.2 L 707.0 161.8 L 707.3 163.8 L 699.6 172.3 L 695.5 172.2 L 693.1 174.7 L 697.2 182.4 L 689.2 184.1 L 684.2 178.9 L 671.0 180.1 L 671.8 177.1 L 675.8 174.7 L 669.0 167.1 L 678.0 168.4 L 684.0 167.0 L 685.3 163.4 L 692.2 161.6 L 693.0 158.3 L 695.2 157.5 L 694.1 155.6 L 697.5 155.2 L 698.9 152.4 L 697.7 149.9 L 700.4 148.1 L 709.3 147.5 L 714.0 152.5 Z M 285.0 226.0 L 283.5 229.9 L 282.1 227.6 L 283.7 227.2 L 280.2 225.0 L 276.4 227.2 L 277.7 229.2 L 275.8 230.0 L 269.3 226.9 L 269.9 223.4 L 273.9 225.6 L 280.2 223.5 L 285.0 226.0 Z M 306.6 280.5 L 309.1 284.8 L 307.1 293.3 L 308.7 295.4 L 304.3 301.0 L 289.0 290.7 L 281.1 274.0 L 274.5 266.9 L 274.1 262.0 L 276.8 259.4 L 276.3 262.2 L 280.4 263.8 L 282.3 259.4 L 290.0 254.3 L 291.0 250.1 L 297.3 256.7 L 304.7 257.1 L 303.4 260.6 L 305.6 262.0 L 297.6 264.2 L 294.4 271.1 L 296.6 276.2 L 299.4 277.8 L 303.7 276.4 L 303.7 280.6 L 306.6 280.5 Z M 850.0 224.1 L 851.6 229.9 L 850.5 232.5 L 849.1 229.8 L 848.5 234.3 L 845.0 232.7 L 843.5 228.3 L 838.6 230.4 L 842.8 225.8 L 843.9 227.7 L 848.6 225.0 L 848.5 222.9 L 850.0 224.1 Z M 842.0 224.9 L 840.0 222.5 L 842.3 219.5 L 842.0 224.9 Z M 842.7 223.8 L 844.5 218.7 L 842.7 223.8 Z M 825.8 226.6 L 832.1 218.6 L 832.4 220.9 L 825.8 226.6 Z M 846.0 218.5 L 847.3 222.2 L 846.0 218.5 Z M 840.2 217.8 L 842.0 218.7 L 838.8 221.0 L 838.6 217.1 L 840.2 217.8 Z M 847.9 215.2 L 849.2 219.3 L 845.3 215.6 L 847.9 215.2 Z M 835.3 212.6 L 837.6 213.7 L 837.2 215.8 L 835.3 212.6 Z M 836.4 198.3 L 839.5 198.6 L 840.3 202.4 L 837.2 207.3 L 838.2 210.7 L 843.9 211.6 L 844.6 215.1 L 840.5 211.4 L 840.5 213.4 L 838.1 211.3 L 835.1 211.7 L 835.8 209.1 L 833.5 208.8 L 832.7 204.8 L 834.4 205.1 L 834.7 199.6 L 836.4 198.3 Z M 933.2 268.6 L 931.2 268.4 L 929.8 265.1 L 933.2 268.6 Z M 921.9 262.0 L 923.3 262.1 L 922.4 265.2 L 917.8 267.4 L 912.0 265.8 L 916.9 263.9 L 918.7 265.3 L 921.9 262.0 Z M 891.6 275.4 L 891.9 257.3 L 901.3 260.6 L 904.8 265.0 L 909.9 266.9 L 908.8 270.5 L 918.4 279.3 L 910.4 278.0 L 902.4 271.2 L 895.4 272.7 L 898.3 274.5 L 896.2 275.9 L 891.6 275.4 Z M 924.9 263.3 L 918.7 257.6 L 925.0 261.4 L 924.9 263.3 Z M 563.2 99.0 L 566.3 102.5 L 564.4 104.9 L 567.0 108.8 L 562.9 112.4 L 563.4 113.8 L 554.9 113.4 L 541.1 108.7 L 539.2 103.1 L 539.5 100.1 L 547.9 98.0 L 563.2 99.0 Z M 316.2 198.8 L 317.6 199.0 L 316.7 200.1 L 313.3 200.0 L 313.4 198.6 L 316.2 198.8 Z M 862.5 131.9 L 860.3 136.5 L 854.3 139.5 L 856.0 143.5 L 851.7 145.1 L 846.3 144.1 L 848.7 142.5 L 845.7 138.4 L 852.5 134.0 L 855.9 135.1 L 855.6 133.4 L 860.8 130.6 L 862.5 131.9 Z M 475.5 133.5 L 482.6 134.5 L 479.0 139.9 L 480.6 143.9 L 478.1 147.2 L 474.9 147.2 L 475.8 143.3 L 474.3 143.2 L 475.0 141.6 L 473.6 142.4 L 475.5 133.5 Z M 348.2 321.1 L 345.2 326.2 L 337.1 325.9 L 340.0 320.6 L 330.4 316.0 L 325.9 311.8 L 328.4 304.6 L 335.8 303.6 L 338.3 305.1 L 338.9 311.4 L 344.8 312.0 L 346.1 316.7 L 349.2 316.8 L 348.2 321.1 Z M 598.5 162.6 L 596.9 162.9 L 597.7 159.7 L 598.5 162.6 Z M 642.4 181.7 L 641.0 180.1 L 642.4 177.4 L 642.4 181.7 Z M 579.4 128.5 L 563.7 128.3 L 563.1 126.1 L 559.3 125.5 L 556.2 121.9 L 564.1 116.5 L 569.4 117.5 L 574.4 116.0 L 578.0 119.5 L 578.4 123.8 L 582.5 124.3 L 580.2 125.2 L 579.4 128.5 Z M 906.1 126.4 L 904.0 128.6 L 906.1 126.4 Z M 912.7 124.1 L 908.0 126.7 L 912.7 124.1 Z M 915.8 123.3 L 918.2 121.7 L 915.8 123.3 Z M 896.5 98.9 L 901.9 114.3 L 897.5 113.4 L 895.9 117.0 L 898.8 121.2 L 896.0 120.3 L 894.6 122.5 L 895.0 107.7 L 893.5 104.6 L 896.5 98.9 Z M 559.0 96.5 L 562.7 97.1 L 563.2 99.0 L 554.5 98.8 L 559.0 96.5 Z M 954.5 87.2 L 957.3 85.8 L 954.5 87.2 Z M 639.6 57.9 L 634.1 58.4 L 636.0 56.9 L 639.6 57.9 Z M 970.0 56.7 L 966.0 56.0 L 970.0 56.7 Z M 667.9 55.8 L 662.4 54.8 L 667.9 55.8 Z M 0.0 51.3 L 6.9 52.2 L 1.3 53.0 L 999.6 52.9 L 996.1 52.6 L 999.6 51.3 L 0.0 51.3 Z M 715.6 49.2 L 717.7 48.7 L 715.6 49.2 Z M 653.7 46.4 L 656.7 46.7 L 653.6 50.2 L 659.6 53.8 L 648.3 53.2 L 650.4 52.5 L 648.4 51.3 L 642.8 50.5 L 647.9 46.7 L 653.7 46.4 Z M 696.3 47.0 L 694.8 46.0 L 699.0 46.6 L 696.3 47.0 Z M 894.9 44.7 L 898.4 46.6 L 888.0 46.0 L 894.9 44.7 Z M 814.9 43.3 L 809.7 43.5 L 814.9 43.3 Z M 907.7 40.6 L 918.9 41.3 L 911.9 42.2 L 907.7 40.6 Z M 889.0 39.4 L 903.7 40.2 L 898.3 41.5 L 895.9 39.7 L 894.8 40.4 L 897.5 41.8 L 886.3 42.7 L 881.1 41.4 L 881.3 39.6 L 889.0 39.4 Z M 768.1 38.1 L 764.7 38.3 L 768.1 38.1 Z M 688.2 38.3 L 670.4 40.8 L 658.2 46.2 L 649.3 45.1 L 655.9 43.1 L 654.4 42.7 L 656.9 41.8 L 655.0 41.4 L 669.9 38.1 L 687.6 36.1 L 691.5 36.9 L 688.2 38.3 Z M 767.4 36.1 L 764.6 36.1 L 767.4 36.1 Z M 863.0 132.5 L 862.2 131.4 L 864.6 129.5 L 863.9 125.3 L 869.7 124.6 L 874.1 116.1 L 863.7 117.5 L 862.6 114.3 L 854.1 111.5 L 850.1 103.5 L 843.3 101.3 L 833.6 103.4 L 835.2 105.6 L 831.2 111.0 L 827.4 112.5 L 817.5 110.4 L 807.8 113.5 L 801.7 113.0 L 796.4 110.3 L 785.7 110.2 L 783.6 107.4 L 774.7 105.3 L 771.7 108.2 L 772.8 110.5 L 770.4 111.9 L 756.5 108.7 L 742.8 113.7 L 740.9 111.8 L 736.7 112.2 L 731.5 108.3 L 726.3 109.1 L 724.2 107.5 L 722.2 109.0 L 712.4 100.0 L 713.4 98.8 L 703.8 101.5 L 704.7 99.9 L 697.5 99.4 L 696.5 96.4 L 691.6 96.1 L 669.8 100.1 L 672.3 102.9 L 669.4 103.0 L 666.7 105.7 L 671.0 107.4 L 669.3 109.2 L 658.4 108.2 L 651.4 109.7 L 648.1 107.0 L 641.1 106.3 L 635.1 109.4 L 635.6 111.2 L 631.7 110.1 L 629.6 115.5 L 636.8 121.4 L 631.8 123.2 L 629.7 126.4 L 634.9 133.8 L 632.2 135.5 L 626.6 131.9 L 611.0 129.4 L 601.8 124.6 L 606.9 122.0 L 604.9 120.5 L 609.1 119.3 L 606.1 119.2 L 606.3 117.9 L 610.4 117.1 L 611.4 112.4 L 598.9 110.1 L 593.9 104.7 L 588.2 105.3 L 586.8 102.8 L 590.9 101.8 L 585.5 97.8 L 585.8 95.6 L 578.2 94.1 L 576.2 86.7 L 577.9 83.9 L 583.8 83.5 L 577.2 81.9 L 587.6 75.4 L 583.3 73.0 L 584.8 72.0 L 582.2 69.5 L 583.6 67.3 L 580.7 64.2 L 583.3 62.0 L 579.1 59.8 L 584.0 56.6 L 588.8 55.7 L 592.6 58.0 L 599.6 57.8 L 613.8 62.0 L 614.4 64.4 L 607.4 66.5 L 588.6 63.4 L 596.4 66.8 L 597.3 71.0 L 604.0 72.8 L 605.7 72.0 L 601.7 70.2 L 602.4 69.0 L 610.4 70.6 L 612.3 70.1 L 610.6 67.8 L 617.2 65.2 L 622.6 66.5 L 622.8 60.4 L 620.4 59.3 L 627.5 59.8 L 629.7 61.6 L 624.7 62.8 L 629.1 64.5 L 649.4 58.4 L 651.0 58.4 L 647.9 60.4 L 663.6 58.3 L 665.9 60.2 L 669.2 58.4 L 667.1 56.7 L 669.5 56.0 L 690.3 60.2 L 692.0 58.5 L 685.5 56.5 L 686.9 53.5 L 685.1 52.6 L 692.7 47.4 L 698.6 47.5 L 702.2 48.1 L 699.6 51.5 L 701.9 52.9 L 701.4 58.1 L 704.4 59.8 L 698.7 64.8 L 691.8 64.6 L 700.2 66.0 L 707.7 61.8 L 706.6 60.0 L 708.7 58.7 L 712.4 58.4 L 714.4 61.8 L 719.2 62.3 L 715.5 61.8 L 715.7 58.6 L 704.9 57.8 L 706.5 53.9 L 703.0 51.6 L 708.3 49.6 L 707.7 47.8 L 710.4 49.2 L 709.2 51.9 L 711.4 52.2 L 719.7 52.8 L 711.2 50.3 L 717.2 50.3 L 715.0 49.7 L 717.3 49.0 L 730.5 50.7 L 728.2 53.9 L 730.6 53.1 L 730.8 55.3 L 732.6 54.0 L 731.0 52.5 L 732.1 51.0 L 724.4 48.6 L 723.8 45.7 L 741.3 44.8 L 738.3 46.2 L 740.7 47.0 L 738.7 46.0 L 743.2 45.0 L 738.3 42.7 L 741.7 41.2 L 759.3 38.6 L 776.7 38.7 L 774.6 37.5 L 782.2 37.7 L 780.5 36.2 L 789.4 34.1 L 794.6 35.0 L 789.4 35.9 L 798.4 36.3 L 795.6 37.5 L 808.6 36.9 L 816.3 39.3 L 812.3 39.4 L 815.6 40.9 L 792.8 47.8 L 807.7 45.3 L 804.8 45.2 L 806.3 44.4 L 813.9 44.7 L 815.7 48.3 L 814.5 47.8 L 816.8 45.6 L 840.3 47.6 L 845.9 45.2 L 858.6 47.0 L 856.7 48.5 L 859.1 49.8 L 854.8 48.9 L 863.9 53.5 L 868.4 50.2 L 883.1 52.5 L 888.8 51.4 L 887.1 50.1 L 889.2 49.5 L 886.5 49.1 L 890.8 47.5 L 906.2 48.8 L 900.4 49.3 L 907.8 49.2 L 903.3 50.9 L 915.2 49.6 L 916.7 50.3 L 913.6 50.8 L 923.6 53.3 L 942.6 53.4 L 943.9 56.2 L 946.9 56.6 L 948.1 58.6 L 946.8 59.6 L 948.7 57.3 L 953.3 56.4 L 966.2 56.3 L 973.7 58.8 L 974.9 58.0 L 972.6 56.6 L 973.5 55.3 L 999.6 58.3 L 0.0 58.4 L 12.9 62.1 L 16.4 66.1 L 15.1 63.6 L 17.5 63.5 L 28.3 66.3 L 20.0 67.6 L 21.6 68.3 L 19.4 69.8 L 21.1 71.1 L 18.6 71.5 L 10.8 68.2 L 4.1 68.0 L 3.8 65.7 L 0.8 66.2 L 1.8 67.9 L 0.0 69.3 L 999.5 69.4 L 986.3 70.1 L 995.5 71.5 L 998.8 75.7 L 997.5 76.9 L 991.7 75.7 L 973.1 83.5 L 970.0 81.7 L 954.1 83.7 L 949.8 88.7 L 953.4 89.5 L 952.1 91.0 L 953.7 93.8 L 950.2 94.2 L 950.2 97.9 L 944.6 99.5 L 944.5 102.5 L 940.2 102.7 L 939.8 105.3 L 935.4 108.4 L 932.2 97.6 L 933.2 92.5 L 935.7 89.4 L 954.7 80.8 L 956.1 77.0 L 959.4 76.4 L 953.7 76.3 L 952.9 79.0 L 944.9 81.6 L 945.3 78.1 L 936.3 78.7 L 928.5 83.8 L 931.0 85.6 L 920.3 86.5 L 922.7 85.3 L 915.6 84.0 L 913.1 85.4 L 895.3 85.7 L 875.6 97.5 L 880.0 98.3 L 879.7 100.6 L 882.4 99.2 L 881.2 101.3 L 888.0 99.2 L 892.7 102.0 L 891.3 102.6 L 893.0 105.1 L 890.3 108.9 L 889.2 115.5 L 875.3 129.1 L 869.9 131.4 L 866.1 129.9 L 863.0 132.5 Z M 799.1 33.0 L 795.6 33.0 L 799.1 33.0 Z M 785.8 29.9 L 784.5 30.9 L 788.7 30.2 L 792.5 32.0 L 775.8 33.3 L 782.2 29.6 L 785.8 29.9 Z M 711.8 28.8 L 715.5 29.2 L 711.8 28.8 Z M 757.4 28.7 L 752.9 27.9 L 757.4 28.7 Z M 642.8 28.0 L 639.1 27.9 L 642.8 28.0 Z M 771.3 27.4 L 777.9 28.4 L 775.1 29.8 L 777.6 30.7 L 776.2 31.0 L 758.5 29.2 L 771.3 27.4 Z M 658.5 26.8 L 654.8 27.5 L 658.5 26.8 Z M 648.7 27.3 L 645.0 27.1 L 648.7 27.3 Z M 661.0 27.5 L 658.5 26.4 L 664.6 26.8 L 661.0 27.5 Z M 631.8 25.4 L 625.3 26.0 L 631.8 25.4 Z M 672.7 25.5 L 664.7 26.4 L 672.7 25.5 Z M 639.6 25.2 L 643.6 25.9 L 636.0 27.3 L 629.6 27.0 L 639.6 25.2 Z M 722.3 25.4 L 719.4 25.5 L 722.3 25.4 Z M 669.8 25.2 L 666.8 25.1 L 669.8 25.2 Z M 652.0 24.7 L 660.2 25.6 L 652.0 24.7 Z M 662.8 24.9 L 658.9 25.0 L 662.8 24.9 Z M 676.0 25.9 L 681.8 25.2 L 676.0 25.9 Z M 754.3 24.6 L 749.7 24.5 L 754.3 24.6 Z M 768.1 24.8 L 771.8 25.7 L 769.9 27.1 L 754.2 26.8 L 768.1 24.8 Z M 660.6 23.5 L 654.1 24.1 L 660.6 23.5 Z M 676.8 23.3 L 673.0 23.1 L 676.8 23.3 Z M 661.9 23.0 L 665.0 22.7 L 661.9 23.0 Z M 584.9 256.7 L 580.2 257.1 L 584.5 253.0 L 584.9 256.7 Z M 452.7 190.5 L 458.7 190.4 L 468.3 175.3 L 475.5 174.7 L 475.8 173.2 L 475.8 177.8 L 466.5 177.8 L 466.5 184.8 L 463.3 186.8 L 463.7 190.8 L 452.8 190.8 L 452.5 192.2 L 452.7 190.5 Z M 629.2 169.2 L 634.5 170.8 L 645.8 186.2 L 653.3 187.0 L 654.5 188.9 L 652.7 194.5 L 636.2 198.4 L 630.9 203.0 L 620.6 201.4 L 618.9 204.6 L 613.3 195.3 L 609.1 191.8 L 606.8 184.2 L 596.1 171.8 L 597.1 168.5 L 600.2 168.9 L 605.5 165.3 L 602.7 162.6 L 608.7 160.8 L 616.1 163.3 L 624.1 168.9 L 629.2 169.2 Z M 607.2 200.0 L 602.8 202.6 L 600.4 214.4 L 594.7 223.8 L 590.9 216.1 L 586.5 222.9 L 583.3 221.5 L 580.1 224.1 L 574.0 223.7 L 571.7 221.1 L 569.6 221.4 L 568.1 225.3 L 565.4 225.5 L 565.7 222.7 L 560.6 214.5 L 563.7 206.9 L 566.6 206.4 L 566.6 194.5 L 569.4 194.5 L 569.4 188.9 L 602.4 188.9 L 604.1 197.8 L 607.2 200.0 Z M 594.7 223.8 L 594.7 226.2 L 591.7 228.1 L 598.0 234.8 L 593.2 239.5 L 589.3 240.2 L 585.7 240.3 L 582.1 237.2 L 578.3 237.9 L 567.1 226.0 L 570.0 221.3 L 577.9 224.1 L 583.3 221.5 L 586.5 222.9 L 590.9 216.1 L 594.7 223.8 Z M 468.3 215.6 L 453.5 215.7 L 453.7 213.5 L 461.5 212.8 L 453.9 212.3 L 451.2 209.0 L 454.8 204.1 L 460.2 204.0 L 465.8 208.9 L 468.3 215.6 Z M 396.8 400.2 L 400.5 402.1 L 396.8 400.2 Z M 949.2 278.9 L 951.0 280.1 L 949.2 278.9 Z M 943.7 275.8 L 946.7 277.4 L 943.7 275.8 Z M 946.5 273.1 L 948.2 276.7 L 946.5 273.1 Z M 944.1 273.7 L 940.1 271.0 L 944.1 273.7 Z M 937.4 270.4 L 934.5 268.5 L 937.4 270.4 Z M 471.3 226.5 L 467.9 230.8 L 464.1 228.2 L 463.0 224.9 L 468.6 222.3 L 471.3 226.5 Z M 249.7 211.9 L 251.5 209.9 L 256.3 211.6 L 255.7 213.4 L 249.7 211.9 Z M 633.3 227.8 L 622.2 225.0 L 618.5 220.5 L 620.1 218.1 L 623.3 221.1 L 635.9 218.7 L 635.9 223.8 L 633.3 227.8 Z M 616.3 239.0 L 624.8 236.4 L 635.9 223.8 L 635.9 218.7 L 642.4 217.1 L 642.7 221.2 L 633.3 237.5 L 615.4 254.7 L 613.8 252.4 L 613.8 242.1 L 616.3 239.0 Z M 556.2 121.9 L 559.3 125.5 L 563.1 126.1 L 562.1 128.4 L 563.8 130.2 L 562.3 132.5 L 553.3 129.2 L 554.4 127.7 L 552.3 122.7 L 556.2 121.9 Z M 348.2 243.6 L 342.2 244.2 L 338.7 238.9 L 341.4 233.5 L 349.8 233.9 L 348.2 243.6 Z M 561.5 115.6 L 550.4 117.4 L 546.8 115.5 L 554.0 112.3 L 562.6 113.7 L 561.5 115.6 Z M 538.1 123.4 L 538.1 120.8 L 545.9 120.8 L 542.6 123.7 L 538.1 123.4 Z M 531.6 86.0 L 535.8 79.6 L 533.8 78.6 L 533.3 74.2 L 539.1 72.0 L 537.9 70.6 L 540.4 66.3 L 545.6 63.7 L 545.0 62.5 L 550.4 59.7 L 555.7 60.1 L 555.9 58.3 L 565.7 61.3 L 567.1 67.2 L 562.1 67.1 L 557.7 72.6 L 548.4 76.4 L 547.9 81.4 L 552.7 84.0 L 545.3 87.1 L 547.0 87.6 L 544.2 94.0 L 535.8 96.1 L 535.8 92.8 L 531.2 87.9 L 531.6 86.0 Z M 589.2 324.6 L 586.9 325.7 L 585.5 323.5 L 587.2 321.5 L 589.2 324.6 Z M 607.7 157.3 L 602.3 160.2 L 599.4 159.1 L 601.6 155.0 L 599.3 151.2 L 601.7 147.8 L 617.5 146.6 L 614.7 149.0 L 613.8 154.4 L 607.7 157.3 Z M 563.5 219.7 L 546.6 229.1 L 543.0 229.1 L 538.9 223.4 L 543.5 222.2 L 537.4 210.1 L 543.0 203.1 L 544.3 193.6 L 541.6 186.1 L 544.4 184.9 L 566.6 195.9 L 566.6 206.4 L 563.7 206.9 L 560.6 214.5 L 563.5 219.7 Z M 503.3 233.1 L 501.5 231.1 L 499.7 219.1 L 502.5 219.5 L 504.4 224.6 L 504.9 232.5 L 503.3 233.1 Z M 778.1 193.6 L 781.1 195.7 L 780.4 201.3 L 788.7 199.2 L 793.4 206.4 L 791.8 210.5 L 786.6 210.2 L 784.2 212.4 L 785.8 217.5 L 780.2 214.9 L 780.3 212.6 L 777.8 213.0 L 775.4 223.0 L 778.9 230.1 L 783.6 232.7 L 780.9 234.4 L 773.0 227.2 L 776.7 217.3 L 772.7 207.9 L 774.7 204.6 L 770.5 198.6 L 772.2 195.2 L 778.1 193.6 Z M 697.1 138.2 L 693.1 138.6 L 692.5 140.2 L 704.4 140.4 L 705.0 142.8 L 707.8 143.2 L 708.5 146.3 L 703.8 146.0 L 699.2 148.1 L 696.9 143.2 L 692.5 146.9 L 688.4 147.1 L 689.9 144.0 L 687.3 140.4 L 695.5 136.1 L 697.1 138.2 Z M 684.8 146.3 L 680.0 146.9 L 679.2 149.1 L 673.1 152.3 L 670.1 151.0 L 669.8 148.2 L 658.9 143.9 L 649.7 146.3 L 649.7 142.1 L 646.5 137.8 L 647.1 136.0 L 652.0 136.1 L 649.6 133.1 L 646.7 135.2 L 645.8 134.0 L 650.3 132.4 L 654.0 135.3 L 658.4 135.4 L 658.2 133.8 L 662.7 131.2 L 666.7 132.8 L 666.8 135.0 L 671.9 135.9 L 677.0 141.2 L 684.9 144.4 L 684.8 146.3 Z M 847.4 276.5 L 847.7 274.1 L 853.6 273.4 L 847.4 276.5 Z M 532.0 157.8 L 532.0 160.0 L 528.5 162.0 L 526.4 166.1 L 525.1 160.8 L 520.8 156.0 L 523.8 147.4 L 530.7 147.0 L 529.1 149.5 L 530.9 152.1 L 527.9 155.4 L 532.0 157.8 Z M 615.3 134.7 L 618.8 134.6 L 624.5 139.9 L 622.3 140.6 L 624.4 146.4 L 623.0 147.3 L 618.8 146.2 L 601.8 147.8 L 600.4 150.5 L 600.1 147.5 L 591.1 149.9 L 585.1 147.6 L 582.5 149.6 L 576.3 148.0 L 578.4 147.2 L 575.7 147.3 L 575.6 144.5 L 573.0 143.7 L 575.4 143.2 L 572.7 138.9 L 580.6 137.8 L 582.9 136.9 L 581.0 135.5 L 597.2 133.2 L 606.6 136.4 L 615.3 134.7 Z M 572.3 136.9 L 575.0 133.2 L 580.7 135.5 L 572.8 138.7 L 574.4 137.2 L 572.3 136.9 Z M 836.1 187.2 L 835.2 188.8 L 833.7 184.2 L 837.7 179.8 L 836.1 187.2 Z M 594.2 252.8 L 604.6 258.5 L 608.9 263.0 L 607.8 266.9 L 609.8 269.5 L 610.3 277.8 L 612.4 279.0 L 611.1 280.1 L 603.8 282.5 L 597.1 282.2 L 595.3 277.0 L 586.0 273.8 L 582.5 268.4 L 581.4 263.6 L 585.6 258.9 L 584.7 253.0 L 594.2 252.8 Z M 584.7 253.0 L 583.0 254.1 L 582.1 252.7 L 583.1 247.8 L 586.9 244.1 L 585.3 243.2 L 585.7 240.2 L 594.4 238.3 L 597.2 245.1 L 594.2 252.8 L 584.7 253.0 Z M 582.5 124.3 L 578.4 123.8 L 580.4 121.0 L 583.7 121.1 L 579.9 116.4 L 576.5 115.3 L 569.1 117.5 L 561.5 115.6 L 566.9 109.7 L 565.8 106.6 L 584.8 107.6 L 586.0 105.5 L 593.7 104.6 L 598.9 110.1 L 611.4 112.4 L 610.4 117.1 L 596.8 121.7 L 601.1 124.8 L 593.5 126.6 L 593.2 124.7 L 590.3 123.9 L 593.3 122.0 L 588.4 121.5 L 590.0 120.8 L 588.6 119.7 L 582.5 124.3 Z M 338.2 340.2 L 339.3 334.7 L 341.8 333.6 L 352.3 340.9 L 349.4 346.3 L 343.7 347.0 L 337.7 344.2 L 338.2 340.2 Z M 67.8 197.2 L 67.1 193.7 L 69.9 195.8 L 67.8 197.2 Z M 298.5 136.2 L 294.3 137.3 L 298.5 136.2 Z M 292.4 125.0 L 303.0 124.3 L 307.6 118.2 L 311.6 119.2 L 311.6 123.1 L 313.8 125.5 L 304.7 128.7 L 302.6 132.5 L 305.6 134.2 L 294.5 136.6 L 291.8 141.9 L 290.3 139.5 L 291.5 143.3 L 289.0 146.8 L 288.8 140.1 L 287.2 140.9 L 287.9 144.2 L 285.3 142.8 L 288.1 144.8 L 285.7 144.0 L 288.1 145.9 L 286.7 145.8 L 287.9 147.2 L 286.0 146.5 L 289.5 149.4 L 289.0 148.3 L 286.8 150.2 L 289.4 151.0 L 276.1 159.7 L 273.6 163.6 L 277.6 175.6 L 276.4 180.0 L 272.9 177.8 L 269.8 172.7 L 270.4 170.0 L 267.4 166.9 L 262.9 167.6 L 260.7 165.4 L 255.4 164.8 L 249.0 165.9 L 251.6 166.6 L 251.7 169.5 L 244.7 167.1 L 236.0 167.5 L 229.3 172.7 L 229.5 178.2 L 224.6 176.5 L 218.3 167.4 L 212.6 169.3 L 204.3 161.8 L 191.5 163.0 L 181.3 159.1 L 174.6 159.7 L 170.7 155.5 L 164.8 154.0 L 159.9 146.7 L 160.0 144.6 L 161.9 144.3 L 158.5 144.3 L 154.5 137.9 L 155.5 121.7 L 157.4 121.8 L 155.3 121.5 L 153.5 115.6 L 158.9 116.5 L 158.0 118.5 L 159.6 116.9 L 159.1 119.2 L 160.4 116.6 L 158.9 113.9 L 236.2 112.9 L 237.1 114.6 L 245.7 116.5 L 254.4 115.9 L 266.2 120.7 L 270.6 124.1 L 271.8 129.0 L 269.0 132.9 L 270.2 134.2 L 280.4 131.1 L 280.9 128.9 L 286.5 128.8 L 292.4 125.0 Z M 14.7 105.5 L 16.6 104.6 L 14.7 105.5 Z M 33.4 101.8 L 30.3 103.3 L 33.4 101.8 Z M 37.1 100.3 L 33.8 101.9 L 37.1 100.3 Z M 45.8 97.3 L 41.9 98.5 L 45.8 97.3 Z M 128.9 93.5 L 133.2 98.0 L 128.7 95.2 L 128.9 93.5 Z M 125.0 90.7 L 125.8 93.9 L 122.7 91.7 L 125.0 90.7 Z M 75.2 89.4 L 77.1 90.1 L 72.2 92.3 L 70.2 90.7 L 75.2 89.4 Z M 122.9 88.2 L 125.1 90.4 L 120.6 89.0 L 122.9 88.2 Z M 125.8 88.5 L 128.2 89.9 L 126.9 88.8 L 128.0 90.6 L 126.3 91.6 L 125.8 88.5 Z M 76.6 87.9 L 73.9 88.7 L 76.6 87.9 Z M 38.5 82.3 L 40.0 83.6 L 38.5 84.0 L 34.8 82.8 L 38.5 82.3 Z M 23.7 73.2 L 31.3 74.2 L 28.6 75.2 L 23.7 73.2 Z M 108.3 56.6 L 108.3 82.5 L 113.6 82.4 L 118.2 86.4 L 124.2 84.2 L 133.8 92.8 L 138.6 94.2 L 137.2 97.9 L 136.0 94.2 L 132.9 95.7 L 134.5 93.9 L 129.2 91.2 L 130.0 89.3 L 123.9 85.2 L 124.8 88.1 L 119.4 86.0 L 122.0 87.7 L 120.2 88.2 L 111.6 84.6 L 113.9 83.8 L 112.6 83.3 L 99.5 83.3 L 97.9 81.5 L 92.8 81.3 L 93.3 80.2 L 88.1 80.3 L 87.6 83.4 L 78.4 85.6 L 80.4 84.0 L 78.1 83.9 L 79.5 81.3 L 85.9 80.9 L 83.1 80.1 L 84.8 79.2 L 74.9 82.5 L 75.9 83.4 L 71.7 85.7 L 73.7 86.8 L 59.9 94.2 L 46.2 97.7 L 62.5 90.3 L 64.0 86.2 L 60.5 87.2 L 59.6 85.9 L 58.4 87.8 L 54.5 86.0 L 49.5 87.1 L 50.9 85.8 L 48.8 82.5 L 50.1 81.4 L 45.3 83.9 L 40.6 81.9 L 46.0 81.2 L 40.0 80.3 L 38.6 78.4 L 43.1 74.5 L 52.4 73.5 L 51.4 71.0 L 53.2 70.3 L 38.4 70.6 L 36.5 69.2 L 38.3 68.6 L 33.0 67.6 L 43.1 65.0 L 50.5 66.5 L 52.5 65.9 L 48.9 64.1 L 54.9 65.5 L 36.7 60.1 L 45.7 57.9 L 50.3 54.7 L 64.4 51.9 L 108.3 56.6 Z M 697.1 132.7 L 695.0 134.7 L 703.1 136.7 L 699.1 138.5 L 695.5 137.9 L 695.7 136.1 L 692.8 136.7 L 690.3 140.1 L 687.3 140.4 L 689.9 144.0 L 686.6 146.6 L 662.7 131.2 L 658.2 133.8 L 658.4 135.4 L 655.5 135.3 L 655.5 125.0 L 662.6 123.5 L 672.2 129.2 L 680.3 128.6 L 683.6 130.6 L 685.3 135.6 L 690.2 137.2 L 697.1 132.7 Z M 333.2 226.3 L 329.4 233.5 L 331.4 236.6 L 325.3 240.1 L 319.9 238.1 L 322.0 243.1 L 323.9 243.5 L 317.8 248.1 L 314.9 247.3 L 311.4 242.3 L 312.9 240.7 L 311.4 237.5 L 312.5 232.9 L 299.9 230.5 L 297.7 224.7 L 296.1 224.5 L 298.3 219.5 L 301.8 217.1 L 300.0 217.9 L 301.0 220.4 L 299.6 222.7 L 301.9 224.7 L 301.4 219.6 L 306.0 218.2 L 305.5 216.2 L 310.6 220.9 L 319.0 222.1 L 328.0 220.2 L 325.2 220.8 L 331.0 224.0 L 328.8 226.2 L 333.2 226.3 Z M 790.0 221.1 L 794.9 220.0 L 794.0 217.7 L 798.6 215.7 L 799.0 207.6 L 792.0 198.1 L 788.6 196.5 L 791.4 194.4 L 790.5 192.6 L 786.4 192.0 L 783.7 187.9 L 792.4 185.2 L 799.9 190.3 L 796.3 191.8 L 793.4 197.3 L 802.3 207.3 L 803.9 214.7 L 802.7 218.5 L 796.4 220.8 L 796.1 222.6 L 794.8 221.6 L 795.8 223.5 L 793.9 222.3 L 794.9 223.9 L 792.0 226.1 L 791.9 222.3 L 790.0 221.1 Z M 649.3 214.9 L 651.4 215.2 L 649.3 214.9 Z M 618.9 204.6 L 620.6 201.4 L 630.9 203.0 L 636.2 198.4 L 644.4 197.3 L 647.4 203.8 L 643.3 207.4 L 622.2 215.0 L 620.1 213.2 L 618.9 204.6 Z M 586.9 312.3 L 588.7 322.1 L 587.0 321.6 L 585.5 324.4 L 591.2 325.2 L 582.9 337.3 L 571.2 344.5 L 555.6 346.6 L 551.1 345.3 L 549.6 341.2 L 550.6 338.2 L 545.7 329.5 L 547.4 327.9 L 550.3 330.2 L 555.5 329.0 L 555.5 318.9 L 557.5 324.5 L 560.3 324.6 L 563.9 320.4 L 570.7 321.5 L 580.9 311.7 L 586.9 312.3 Z M 577.0 330.4 L 575.1 332.4 L 577.8 335.2 L 581.6 331.2 L 579.5 329.4 L 577.0 330.4 Z M 592.2 289.0 L 583.9 291.7 L 584.4 293.5 L 580.5 294.3 L 574.4 300.1 L 564.9 299.0 L 561.0 294.4 L 561.0 286.2 L 566.6 286.1 L 566.6 280.2 L 572.3 283.1 L 575.5 282.3 L 582.7 287.4 L 582.8 283.8 L 580.7 284.3 L 578.8 282.2 L 580.5 273.5 L 585.4 272.8 L 592.2 276.8 L 593.1 284.3 L 590.7 287.8 L 592.2 289.0 Z M 581.6 311.7 L 577.8 309.9 L 570.1 299.6 L 575.1 299.9 L 580.5 294.3 L 584.4 293.5 L 591.5 296.4 L 591.7 305.4 L 586.9 312.3 L 581.6 311.7 Z M 475.0 53.2 L 477.7 52.3 L 475.0 53.2 Z M 560.0 31.7 L 569.2 34.0 L 558.1 34.9 L 560.1 33.5 L 556.2 32.1 L 560.0 31.7 Z M 531.2 31.7 L 533.7 32.7 L 531.2 31.7 Z M 580.7 30.8 L 577.5 31.0 L 580.7 30.8 Z M 546.6 28.1 L 559.4 31.3 L 553.8 32.0 L 546.4 37.3 L 538.9 34.9 L 546.8 33.6 L 538.0 33.3 L 546.6 31.5 L 536.5 32.7 L 529.7 28.5 L 538.0 28.2 L 534.9 29.0 L 539.0 29.6 L 540.5 28.3 L 545.1 30.3 L 543.9 28.7 L 546.6 28.1 Z M 590.3 27.5 L 593.2 27.2 L 590.3 27.5 Z M 558.0 27.1 L 575.5 28.1 L 563.6 29.9 L 550.9 28.2 L 558.0 27.1 Z" fill="#1A3050" stroke="#2A4060" stroke-width="0.4"/>
+
+      <!-- Sun glow overlay (brightens the day side) -->
+      <ellipse id="sunOverlay" cx="0" cy="250" rx="320" ry="320" fill="url(#sunGrad)" style="mix-blend-mode: screen;"/>
+
+      <!-- Night overlay (half-circle) — will be animated by JS -->
+      <ellipse id="nightOverlay" cx="500" cy="250" rx="250" ry="250" fill="url(#nightGrad)" opacity="0.7"/>
+
+      <!-- Sun position marker -->
+      <circle id="sunRing" class="sun-ring" cx="0" cy="250" r="5" fill="none" stroke="#FFE9A8" stroke-width="1.2" opacity="0.9"/>
+      <circle id="sunMarker" cx="0" cy="250" r="5" fill="#FFE9A8" opacity="0.95" filter="url(#glowFilter)"/>
+
+      <!-- City dots -->
+      <g id="cityDots" filter="url(#glowFilter)"></g>
+
+      <!-- Grid lines (latitude/longitude) -->
+      <g opacity="0.08" stroke="#00E5FF" stroke-width="0.5">
+        <line x1="0" y1="125" x2="1000" y2="125"/>
+        <line x1="0" y1="250" x2="1000" y2="250"/>
+        <line x1="0" y1="375" x2="1000" y2="375"/>
+        <line x1="166" y1="0" x2="166" y2="500"/>
+        <line x1="333" y1="0" x2="333" y2="500"/>
+        <line x1="500" y1="0" x2="500" y2="500"/>
+        <line x1="666" y1="0" x2="666" y2="500"/>
+        <line x1="833" y1="0" x2="833" y2="500"/>
+      </g>
+
+      <!-- Equator label -->
+      <text x="8" y="253" font-size="8" fill="#00E5FF" opacity="0.3" font-family="Inter,sans-serif">EQUATOR</text>
+      </g>
+
+    </svg>
+  </div>
+</div>
+
+<!-- TIME ZONE COMPARISON -->
+<section class="compare-section">
+  <div class="compare-card">
+    <div class="section-header" style="margin-bottom:0;">
+      <span class="section-title">Compare Time Zones</span>
+      <span class="section-count">Pick 3 cities</span>
+    </div>
+    <div class="compare-grid" id="compareGrid">
+      <div class="compare-slot">
+        <select class="compare-select" id="compareSelect0"></select>
+        <div class="compare-time" id="compareTime0">--:--:--</div>
+        <div class="compare-date" id="compareDate0">---</div>
+        <div class="compare-utc" id="compareUTC0">UTC</div>
+        <div class="compare-diff" id="compareDiff0"></div>
+      </div>
+      <div class="compare-slot">
+        <select class="compare-select" id="compareSelect1"></select>
+        <div class="compare-time" id="compareTime1">--:--:--</div>
+        <div class="compare-date" id="compareDate1">---</div>
+        <div class="compare-utc" id="compareUTC1">UTC</div>
+        <div class="compare-diff" id="compareDiff1"></div>
+      </div>
+      <div class="compare-slot">
+        <select class="compare-select" id="compareSelect2"></select>
+        <div class="compare-time" id="compareTime2">--:--:--</div>
+        <div class="compare-date" id="compareDate2">---</div>
+        <div class="compare-utc" id="compareUTC2">UTC</div>
+        <div class="compare-diff" id="compareDiff2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOCKS GRID -->
+<section class="clocks-section">
+  <div class="section-header">
+    <span class="section-title">All Time Zones</span>
+    <span class="section-count" id="visibleCount"></span>
+  </div>
+  <div class="clocks-grid" id="clocksGrid"></div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-item open">
+    <div class="faq-q">What time is it right now around the world? <span class="faq-icon">+</span></div>
+    <div class="faq-a"><div class="faq-a-inner">Our world clock updates every second, showing exact local time in 50+ major cities across all continents and time zones. Each card shows the live time, date, and whether it's currently day or night there.</div></div>
+  </div>
+  <div class="faq-item open">
+    <div class="faq-q">How many time zones are there in the world? <span class="faq-icon">+</span></div>
+    <div class="faq-a"><div class="faq-a-inner">There are 24 standard time zones, but because some countries use 30-minute or 45-minute offsets, the real count is around 38–40 distinct UTC offsets in active use.</div></div>
+  </div>
+  <div class="faq-item open">
+    <div class="faq-q">What is the difference between GMT and UTC? <span class="faq-icon">+</span></div>
+    <div class="faq-a"><div class="faq-a-inner">Both GMT and UTC show the same time at this moment. UTC is the scientific atomic-clock standard used to keep global time; GMT is a historical time zone centred on the Royal Observatory in Greenwich, England. For everyday use they are interchangeable.</div></div>
+  </div>
+  <div class="faq-item open">
+    <div class="faq-q">Which country has the most time zones? <span class="faq-icon">+</span></div>
+    <div class="faq-a"><div class="faq-a-inner">France has the most time zones of any country — 12 in total — thanks to its overseas territories spread across the globe. If you count only contiguous land, Russia spans 11 time zones, more than any other nation.</div></div>
+  </div>
+  <div class="faq-item open">
+    <div class="faq-q">Does China only have one time zone? <span class="faq-icon">+</span></div>
+    <div class="faq-a"><div class="faq-a-inner">Yes. Despite its enormous east-to-west span, all of China officially uses a single time zone: China Standard Time (CST), which is UTC+8. This means sunrise and sunset times can differ by several hours between eastern and western parts of the country.</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© <span id="cy"></span> <a href="https://stopwatchonline.in/">StopwatchOnline.in</a> · Free Online Timers &amp; World Clock ·
+    <a href="https://stopwatchonline.in/">Stopwatch</a> · <a href="https://stopwatchonline.in/pomodoro-timer/">Pomodoro</a> · <a href="https://stopwatchonline.in/5-minute-timer/">5 Min Timer</a>
+  </p>
+  <script>document.getElementById('cy').textContent = new Date().getFullYear();</script>
+</footer>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-bottom-nav" aria-label="Navigate between tools">
+  <a href="https://stopwatchonline.in/" class="mbn-item" title="Stopwatch"><span class="mbn-icon">⏱</span><span class="mbn-label">Stopwatch</span></a>
+  <a href="https://stopwatchonline.in/5-minute-timer/" class="mbn-item" title="5 Min"><span class="mbn-icon">⏳</span><span class="mbn-label">5 Min</span></a>
+  <a href="https://stopwatchonline.in/pomodoro-timer/" class="mbn-item" title="Pomodoro"><span class="mbn-icon">🍅</span><span class="mbn-label">Pomodoro</span></a>
+  <a href="https://stopwatchonline.in/egg-timer/" class="mbn-item" title="Egg Timer"><span class="mbn-icon">🥚</span><span class="mbn-label">Egg Timer</span></a>
+  <a href="https://stopwatchonline.in/world-clock/" class="mbn-item mbn-active" title="World Clock"><span class="mbn-icon">🌍</span><span class="mbn-label">World Clock</span></a>
+</nav>
+
+<script>
+// ── THEME TOGGLE ──
+let isLight = false;
+document.getElementById('themeToggle').addEventListener('click', function() {
+  isLight = !isLight;
+  document.body.classList.toggle('light', isLight);
+  const btn = document.getElementById('themeToggle');
+  btn.querySelector('.btn-icon-emoji').textContent = isLight ? '🌙' : '☀️';
+  btn.querySelector('.btn-icon-label').textContent = isLight ? ' Dark Mode' : ' Light Mode';
+});
+
+// Share button
+document.getElementById('shareBtn').addEventListener('click', function() {
+  const url = 'https://stopwatchonline.in/world-clock/';
+  if (navigator.share) {
+    navigator.share({ title: 'World Clock — StopwatchOnline', url });
+  } else if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function() {
+      const btn = document.getElementById('shareBtn');
+      btn.querySelector('.btn-icon-emoji').textContent = '✅';
+      setTimeout(function() { btn.querySelector('.btn-icon-emoji').textContent = '🔗'; }, 2000);
+    });
+  }
+});
+
+// ── CITY DATA ──
+const CITIES = [
+  // Americas
+  { city:'New York',    country:'USA',           tz:'America/New_York',    utc:'-5',  x:294, y:137, capital:false },
+  { city:'Los Angeles', country:'USA',           tz:'America/Los_Angeles', utc:'-8',  x:172, y:156, capital:false },
+  { city:'Chicago',     country:'USA',           tz:'America/Chicago',     utc:'-6',  x:257, y:134, capital:false },
+  { city:'Toronto',     country:'Canada',        tz:'America/Toronto',     utc:'-5',  x:279, y:129, capital:false },
+  { city:'Vancouver',   country:'Canada',        tz:'America/Vancouver',   utc:'-8',  x:158, y:113, capital:false },
+  { city:'Mexico City', country:'Mexico',        tz:'America/Mexico_City', utc:'-6',  x:225, y:196, capital:true },
+  { city:'São Paulo',   country:'Brazil',        tz:'America/Sao_Paulo',   utc:'-3',  x:371, y:315, capital:false },
+  { city:'Buenos Aires',country:'Argentina',     tz:'America/Argentina/Buenos_Aires', utc:'-3', x:338, y:346, capital:true },
+  { city:'Bogotá',      country:'Colombia',      tz:'America/Bogota',      utc:'-5',  x:294, y:237, capital:true },
+  { city:'Lima',        country:'Peru',          tz:'America/Lima',        utc:'-5',  x:286, y:283, capital:true },
+  { city:'Santiago',    country:'Chile',         tz:'America/Santiago',    utc:'-4',  x:304, y:343, capital:true },
+
+  // Europe
+  { city:'London',      country:'UK',            tz:'Europe/London',       utc:'+0',  x:500, y:107, capital:true },
+  { city:'Paris',       country:'France',        tz:'Europe/Paris',        utc:'+1',  x:506, y:114, capital:true },
+  { city:'Berlin',      country:'Germany',       tz:'Europe/Berlin',       utc:'+1',  x:537, y:104, capital:true },
+  { city:'Madrid',      country:'Spain',         tz:'Europe/Madrid',       utc:'+1',  x:490, y:138, capital:true },
+  { city:'Rome',        country:'Italy',         tz:'Europe/Rome',         utc:'+1',  x:535, y:134, capital:true },
+  { city:'Amsterdam',   country:'Netherlands',   tz:'Europe/Amsterdam',    utc:'+1',  x:514, y:104, capital:true },
+  { city:'Stockholm',   country:'Sweden',        tz:'Europe/Stockholm',    utc:'+1',  x:550, y:85, capital:true },
+  { city:'Moscow',      country:'Russia',        tz:'Europe/Moscow',       utc:'+3',  x:604, y:95, capital:true },
+  { city:'Istanbul',    country:'Turkey',        tz:'Europe/Istanbul',     utc:'+3',  x:580, y:136, capital:false },
+  { city:'Athens',      country:'Greece',        tz:'Europe/Athens',       utc:'+2',  x:566, y:144, capital:true },
+  { city:'Warsaw',      country:'Poland',        tz:'Europe/Warsaw',       utc:'+1',  x:558, y:105, capital:true },
+  { city:'Kyiv',        country:'Ukraine',       tz:'Europe/Kyiv',         utc:'+2',  x:585, y:110, capital:true },
+
+  // Africa / Middle East
+  { city:'Cairo',       country:'Egypt',         tz:'Africa/Cairo',        utc:'+2',  x:587, y:167, capital:true },
+  { city:'Lagos',       country:'Nigeria',       tz:'Africa/Lagos',        utc:'+1',  x:509, y:232, capital:false },
+  { city:'Nairobi',     country:'Kenya',         tz:'Africa/Nairobi',      utc:'+3',  x:602, y:254, capital:true },
+  { city:'Johannesburg',country:'South Africa',  tz:'Africa/Johannesburg', utc:'+2',  x:578, y:323, capital:false },
+  { city:'Casablanca',  country:'Morocco',       tz:'Africa/Casablanca',   utc:'+1',  x:479, y:157, capital:false },
+  { city:'Dubai',       country:'UAE',           tz:'Asia/Dubai',          utc:'+4',  x:654, y:180, capital:false },
+  { city:'Riyadh',      country:'Saudi Arabia',  tz:'Asia/Riyadh',         utc:'+3',  x:630, y:181, capital:true },
+  { city:'Tel Aviv',    country:'Israel',        tz:'Asia/Jerusalem',      utc:'+2',  x:597, y:161, capital:false },
+
+  // Asia
+  { city:'Mumbai',      country:'India',         tz:'Asia/Kolkata',        utc:'+5:30', x:702, y:197, capital:false },
+  { city:'Delhi',       country:'India',         tz:'Asia/Kolkata',        utc:'+5:30', x:714, y:171, capital:true },
+  { city:'Kolkata',     country:'India',         tz:'Asia/Kolkata',        utc:'+5:30', x:746, y:187, capital:false },
+  { city:'Karachi',     country:'Pakistan',      tz:'Asia/Karachi',        utc:'+5',  x:686, y:181, capital:false },
+  { city:'Dhaka',       country:'Bangladesh',    tz:'Asia/Dhaka',          utc:'+6',  x:751, y:184, capital:true },
+  { city:'Colombo',     country:'Sri Lanka',     tz:'Asia/Colombo',        utc:'+5:30', x:722, y:231, capital:true },
+  { city:'Bangkok',     country:'Thailand',      tz:'Asia/Bangkok',        utc:'+7',  x:779, y:212, capital:true },
+  { city:'Singapore',   country:'Singapore',     tz:'Asia/Singapore',      utc:'+8',  x:788, y:246, capital:true },
+  { city:'Kuala Lumpur',country:'Malaysia',      tz:'Asia/Kuala_Lumpur',   utc:'+8',  x:782, y:241, capital:false },
+  { city:'Jakarta',     country:'Indonesia',     tz:'Asia/Jakarta',        utc:'+7',  x:797, y:267, capital:true },
+  { city:'Ho Chi Minh', country:'Vietnam',       tz:'Asia/Ho_Chi_Minh',    utc:'+7',  x:796, y:220, capital:false },
+  { city:'Manila',      country:'Philippines',   tz:'Asia/Manila',         utc:'+8',  x:836, y:209, capital:true },
+  { city:'Hong Kong',   country:'China',         tz:'Asia/Hong_Kong',      utc:'+8',  x:817, y:188, capital:false },
+  { city:'Shanghai',    country:'China',         tz:'Asia/Shanghai',       utc:'+8',  x:838, y:163, capital:false },
+  { city:'Beijing',     country:'China',         tz:'Asia/Shanghai',       utc:'+8',  x:823, y:139, capital:true },
+  { city:'Seoul',       country:'South Korea',   tz:'Asia/Seoul',          utc:'+9',  x:853, y:146, capital:true },
+  { city:'Tokyo',       country:'Japan',         tz:'Asia/Tokyo',          utc:'+9',  x:888, y:151, capital:true },
+  { city:'Taipei',      country:'Taiwan',        tz:'Asia/Taipei',         utc:'+8',  x:838, y:181, capital:true },
+  { city:'Tashkent',    country:'Uzbekistan',    tz:'Asia/Tashkent',       utc:'+5',  x:692, y:135, capital:true },
+
+  // Pacific / Oceania
+  { city:'Sydney',      country:'Australia',     tz:'Australia/Sydney',    utc:'+10', x:920, y:344, capital:false },
+  { city:'Melbourne',   country:'Australia',     tz:'Australia/Melbourne', utc:'+10', x:903, y:355, capital:false },
+  { city:'Perth',       country:'Australia',     tz:'Australia/Perth',     utc:'+8',  x:822, y:339, capital:false },
+  { city:'Auckland',    country:'New Zealand',   tz:'Pacific/Auckland',    utc:'+12', x:986, y:352, capital:false },
+  { city:'Honolulu',    country:'USA (Hawaii)',  tz:'Pacific/Honolulu',    utc:'-10', x:62, y:191, capital:false },
+];
+
+// ── RENDER CITY DOTS ON MAP ──
+function renderMapDots() {
+  const g = document.getElementById('cityDots');
+  g.innerHTML = '';
+
+  const regular = CITIES.filter(c => !c.capital);
+  const capitals = CITIES.filter(c => c.capital);
+
+  regular.forEach(c => {
+    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('cx', c.x);
+    dot.setAttribute('cy', c.y);
+    dot.setAttribute('r', '3');
+    dot.setAttribute('fill', '#00E5FF');
+    dot.setAttribute('opacity', '0.6');
+    dot.style.animation = `pulse-dot ${2 + Math.random()}s ease-in-out infinite`;
+    dot.style.animationDelay = `${Math.random()}s`;
+    g.appendChild(dot);
+  });
+
+  capitals.forEach(c => {
+    const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    ring.setAttribute('cx', c.x);
+    ring.setAttribute('cy', c.y);
+    ring.setAttribute('r', '4.5');
+    ring.setAttribute('fill', 'none');
+    ring.setAttribute('stroke', '#FFB347');
+    ring.setAttribute('stroke-width', '1');
+    ring.setAttribute('opacity', '0.55');
+    ring.classList.add('capital-ring');
+    g.appendChild(ring);
+
+    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('cx', c.x);
+    dot.setAttribute('cy', c.y);
+    dot.setAttribute('r', '2.5');
+    dot.setAttribute('fill', '#FFB347');
+    dot.setAttribute('opacity', '0.95');
+    dot.setAttribute('stroke', '#FFE3B0');
+    dot.setAttribute('stroke-width', '0.6');
+    dot.classList.add('capital-dot');
+    g.appendChild(dot);
+  });
+}
+renderMapDots();
+
+// ── ANIMATE SUN / NIGHT OVERLAY ──
+function updateNightOverlay() {
+  const now = new Date();
+  const utcHour = now.getUTCHours() + now.getUTCMinutes() / 60 + now.getUTCSeconds() / 3600;
+
+  // Sun is roughly at longitude where it's local noon
+  const sunLon = 180 - (utcHour / 24 * 360);
+  // Map longitude (-180 to 180) → SVG x (0 to 1000)
+  const sunX = ((((sunLon + 180) % 360) + 360) % 360) / 360 * 1000;
+
+  // Approximate solar declination based on day of year (sun's latitude)
+  const startOfYear = new Date(Date.UTC(now.getUTCFullYear(), 0, 0));
+  const dayOfYear = Math.floor((now - startOfYear) / 86400000);
+  const declination = -23.44 * Math.cos((2 * Math.PI / 365.25) * (dayOfYear + 10));
+  // Map latitude (-90 to 90) → SVG y (0 to 500), within the 580 viewBox group offset
+  const sunY = (90 - declination) / 180 * 500;
+
+  // Night overlay center is opposite the sun
+  const nightX = (sunX + 500) % 1000;
+
+  const overlay = document.getElementById('nightOverlay');
+  overlay.setAttribute('cx', nightX);
+  overlay.setAttribute('cy', sunY);
+
+  const sunOverlay = document.getElementById('sunOverlay');
+  sunOverlay.setAttribute('cx', sunX);
+  sunOverlay.setAttribute('cy', sunY);
+
+  const sunRing = document.getElementById('sunRing');
+  sunRing.setAttribute('cx', sunX);
+  sunRing.setAttribute('cy', sunY);
+
+  const sunMarker = document.getElementById('sunMarker');
+  sunMarker.setAttribute('cx', sunX);
+  sunMarker.setAttribute('cy', sunY);
+}
+
+// ── LOCAL TIME ──
+function updateLocalTime() {
+  const now = new Date();
+  const h = now.getHours().toString().padStart(2,'0');
+  const m = now.getMinutes().toString().padStart(2,'0');
+  const s = now.getSeconds().toString().padStart(2,'0');
+  document.getElementById('localTime').textContent = `${h}:${m}:${s}`;
+  document.getElementById('localDate').textContent = now.toLocaleDateString(undefined, { weekday:'long', month:'long', day:'numeric' });
+  const tzName = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  document.getElementById('localTZ').textContent = tzName;
+  const offset = -now.getTimezoneOffset();
+  const sign = offset >= 0 ? '+' : '-';
+  const abs = Math.abs(offset);
+  const oh = Math.floor(abs/60).toString().padStart(2,'0');
+  const om = (abs%60).toString().padStart(2,'0');
+  document.getElementById('localUTC').textContent = `UTC${sign}${oh}:${om}`;
+}
+
+// ── GET TIME FOR A CITY ──
+function getCityTime(tz) {
+  const now = new Date();
+  const opts = { timeZone: tz, hour:'2-digit', minute:'2-digit', second:'2-digit', hour12: false };
+  const dOpts = { timeZone: tz, weekday:'short', month:'short', day:'numeric' };
+  return {
+    time: new Intl.DateTimeFormat('en-GB', opts).format(now),
+    date: new Intl.DateTimeFormat('en-GB', dOpts).format(now),
+    hour: parseInt(new Intl.DateTimeFormat('en-GB', { timeZone:tz, hour:'2-digit', hour12:false }).format(now))
+  };
+}
+
+// ── BUILD CARDS ──
+let allCards = [];
+function buildCards() {
+  const grid = document.getElementById('clocksGrid');
+  grid.innerHTML = '';
+  allCards = [];
+  CITIES.forEach((c, i) => {
+    const card = document.createElement('div');
+    card.className = 'clock-card';
+    card.style.animationDelay = `${0.05 * (i % 20)}s`;
+    card.dataset.city = c.city.toLowerCase();
+    card.dataset.country = c.country.toLowerCase();
+    card.dataset.tz = c.tz;
+    card.innerHTML = `
+      <div class="card-city">${c.city}</div>
+      <div class="card-country">${c.country}</div>
+      <div class="card-time" id="ct-${i}">--:--:--</div>
+      <div class="card-date" id="cd-${i}">---</div>
+      <div class="card-footer">
+        <span class="card-utc">UTC${c.utc}</span>
+        <span class="card-daynight" id="cdn-${i}">·</span>
+      </div>`;
+    grid.appendChild(card);
+    allCards.push({ el: card, idx: i, tz: c.tz });
+  });
+  updateCount();
+}
+
+function updateCount() {
+  const visible = document.querySelectorAll('.clock-card:not([style*="display: none"])').length;
+  document.getElementById('visibleCount').textContent = `${visible} cities`;
+}
+
+// ── UPDATE ALL CLOCKS ──
+function updateClocks() {
+  allCards.forEach(({ idx, tz }) => {
+    const { time, date, hour } = getCityTime(tz);
+    const tEl = document.getElementById(`ct-${idx}`);
+    const dEl = document.getElementById(`cd-${idx}`);
+    const dnEl = document.getElementById(`cdn-${idx}`);
+    if (tEl) tEl.textContent = time;
+    if (dEl) dEl.textContent = date;
+    if (dnEl) {
+      const isDay = hour >= 6 && hour < 20;
+      dnEl.textContent = isDay ? '☀ Day' : '🌙 Night';
+      dnEl.className = `card-daynight ${isDay ? 'day' : 'night'}`;
+    }
+  });
+}
+
+// ── SEARCH ──
+document.getElementById('searchInput').addEventListener('input', e => {
+  const q = e.target.value.toLowerCase().trim();
+  allCards.forEach(({ el }) => {
+    const match = !q || el.dataset.city.includes(q) || el.dataset.country.includes(q) || el.dataset.tz.toLowerCase().includes(q);
+    el.style.display = match ? '' : 'none';
+  });
+  updateCount();
+});
+
+// ── FAQ TOGGLE ──
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    q.parentElement.classList.toggle('open');
+  });
+});
+
+// ── TIME ZONE COMPARISON ──
+// Get current UTC offset in minutes for a given time zone
+function getTZOffsetMinutes(tz) {
+  const now = new Date();
+  const tzDate = new Date(now.toLocaleString('en-US', { timeZone: tz }));
+  const utcDate = new Date(now.toLocaleString('en-US', { timeZone: 'UTC' }));
+  return Math.round((tzDate - utcDate) / 60000);
+}
+
+function formatOffset(mins) {
+  const sign = mins >= 0 ? '+' : '-';
+  const abs = Math.abs(mins);
+  const h = Math.floor(abs / 60);
+  const m = abs % 60;
+  return `UTC${sign}${h}${m ? ':' + m.toString().padStart(2,'0') : ''}`;
+}
+
+function formatDiff(mins) {
+  if (mins === 0) return 'Same time';
+  const sign = mins > 0 ? '+' : '-';
+  const abs = Math.abs(mins);
+  const h = Math.floor(abs / 60);
+  const m = abs % 60;
+  const parts = [];
+  if (h) parts.push(`${h}h`);
+  if (m) parts.push(`${m}m`);
+  return `${sign}${parts.join(' ')} vs slot 1`;
+}
+
+const COMPARE_DEFAULTS = ['New York', 'London', 'Tokyo'];
+
+function populateCompareSelects() {
+  for (let i = 0; i < 3; i++) {
+    const sel = document.getElementById(`compareSelect${i}`);
+    sel.innerHTML = '';
+    CITIES.forEach((c, idx) => {
+      const opt = document.createElement('option');
+      opt.value = idx;
+      opt.textContent = `${c.city}, ${c.country}`;
+      sel.appendChild(opt);
+    });
+    const defaultIdx = CITIES.findIndex(c => c.city === COMPARE_DEFAULTS[i]);
+    sel.value = defaultIdx >= 0 ? defaultIdx : i;
+    sel.addEventListener('change', updateCompare);
+  }
+}
+
+function updateCompare() {
+  const offsets = [];
+  for (let i = 0; i < 3; i++) {
+    const idx = parseInt(document.getElementById(`compareSelect${i}`).value, 10);
+    const c = CITIES[idx];
+    const { time, date } = getCityTime(c.tz);
+    document.getElementById(`compareTime${i}`).textContent = time;
+    document.getElementById(`compareDate${i}`).textContent = date;
+    document.getElementById(`compareUTC${i}`).textContent = formatOffset(getTZOffsetMinutes(c.tz));
+    offsets[i] = getTZOffsetMinutes(c.tz);
+  }
+  for (let i = 0; i < 3; i++) {
+    const diffEl = document.getElementById(`compareDiff${i}`);
+    diffEl.textContent = i === 0 ? '' : formatDiff(offsets[i] - offsets[0]);
+  }
+}
+
+// ── INIT + TICK ──
+buildCards();
+populateCompareSelects();
+updateLocalTime();
+updateClocks();
+updateCompare();
+updateNightOverlay();
+
+setInterval(() => {
+  updateLocalTime();
+  updateClocks();
+  updateCompare();
+  updateNightOverlay();
+}, 1000);
+</script>
+</body>
+</html>
